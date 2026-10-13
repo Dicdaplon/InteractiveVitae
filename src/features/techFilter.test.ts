@@ -28,7 +28,7 @@ describe('setupTechFilter', () => {
   const clear = () => section.querySelector<HTMLElement>('[data-action="clear-filter"]')!;
 
   beforeEach(() => {
-    section = renderCv(cvFr).querySelector<HTMLElement>('#experience')!;
+    section = renderCv(cvFr).querySelector<HTMLElement>('.cv-main')!;
     setupTechFilter(section, labels);
   });
 
@@ -52,6 +52,23 @@ describe('setupTechFilter', () => {
     expect(card('aiotrust').hasAttribute('data-match')).toBe(false);
     expect(status()).toBe('hint');
     expect(clear().hidden).toBe(true);
+  });
+
+  it('includes projects and technologies hidden in collapsed details', () => {
+    chip('aiotrust', 'Git').click();
+    expect(card('mylight').dataset.match).toBe('true');
+    expect(section.querySelector('#project-lolouplive')?.getAttribute('data-match')).toBe('false');
+
+    section.querySelector<HTMLElement>('#project-lolouplive [data-tech="TypeScript"]')!.click();
+    expect(section.querySelector('#project-ecole-du-loup')?.getAttribute('data-match')).toBe(
+      'true'
+    );
+    expect(card('aiotrust').dataset.match).toBe('false');
+  });
+
+  it('does not open any details', () => {
+    chip('aiotrust', 'Git').click();
+    expect(section.querySelectorAll('details[open]')).toHaveLength(0);
   });
 
   it('resets from the clear button', () => {

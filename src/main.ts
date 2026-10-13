@@ -21,7 +21,7 @@ if (themeButton) setupThemeToggle(document.documentElement, themeButton);
 const printButton = page.querySelector<HTMLElement>('[data-action="print"]');
 if (printButton) setupPrintButton(printButton);
 
-const experience = page.querySelector<HTMLElement>('#experience');
-if (experience) {
-  setupTechFilter(experience, { hint: cvFr.ui.filterHint, result: cvFr.ui.filterResult });
+const main = page.querySelector<HTMLElement>('.cv-main');
+if (main) {
+  setupTechFilter(main, { hint: cvFr.ui.filterHint, result: cvFr.ui.filterResult });
 }

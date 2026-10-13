@@ -17,7 +17,7 @@ function readTechnologies(card: HTMLElement): string[] {
 }
 
 /**
- * Highlights the experiences that use the selected technology and dims the
+ * Highlights the entries that use the selected technology and dims the
  * others. Clicking the active chip again, or the clear button, resets it.
  * State lives in data attributes so CSS owns the visuals.
  */
