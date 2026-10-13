@@ -1,9 +1,20 @@
+import { readdirSync } from 'node:fs';
+import { join, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import type { Cv, Entry } from './types';
 
-// Every variant present on this machine, public and private.
-const modules = import.meta.glob<{ default: Cv }>('./cv/**/*.ts', { eager: true });
-const variants = Object.entries(modules).map(([path, module]) => ({ path, cv: module.default }));
+// Every variant present on this machine, public and private. Read from disk
+// rather than import.meta.glob, whose result Vitest caches across new files.
+const cvDir = join(import.meta.dirname, 'cv');
+const variants = await Promise.all(
+  readdirSync(cvDir, { recursive: true, encoding: 'utf8' })
+    .filter((file) => file.endsWith('.ts'))
+    .map(async (file) => {
+      const path = `./cv/${file.split(sep).join('/')}`;
+      const module = (await import(/* @vite-ignore */ path)) as { default: Cv };
+      return { path, cv: module.default };
+    })
+);
 
 for (const { path, cv } of variants) {
   describe(`CV entries in ${path}`, () => {
