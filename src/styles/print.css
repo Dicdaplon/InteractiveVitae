@@ -1,0 +1,89 @@
+/* Print: the fixed A4 version. Token values switch in tokens.css; this file
+   only changes layout and hides screen-only controls. */
+
+@page {
+  size: A4;
+  margin: 14mm 14mm 16mm;
+}
+
+@media print {
+  body {
+    background: var(--color-canvas);
+  }
+
+  .toolbar,
+  .filter-bar {
+    display: none !important;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .cv-header {
+    margin-bottom: var(--sp-5);
+    padding-bottom: var(--sp-3);
+    break-inside: avoid;
+  }
+
+  .cv-layout {
+    grid-template-columns: var(--sidebar) minmax(0, 1fr);
+    grid-template-areas: 'aside main';
+    gap: var(--sp-6);
+  }
+
+  .cv-aside {
+    position: static;
+  }
+
+  .cv-section + .cv-section {
+    margin-top: var(--sp-5);
+  }
+
+  .cv-section__title {
+    margin-bottom: var(--sp-3);
+    break-after: avoid;
+  }
+
+  /* Cards become plain blocks on paper: no fill, no dimming, a single rule. */
+  .experience,
+  .experience[data-match] {
+    padding: 0 0 0 var(--sp-4);
+    border: 0;
+    border-left: 1.5pt solid var(--color-timeline);
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    opacity: 1;
+    break-inside: avoid;
+  }
+
+  .experience + .experience {
+    margin-top: var(--sp-4);
+  }
+
+  .tag,
+  .tag[aria-pressed='true'] {
+    border-color: var(--color-line-strong);
+    background: var(--color-tag-bg);
+    color: var(--color-tag-ink);
+    print-color-adjust: exact;
+  }
+
+  .cv-header,
+  .cv-section__title {
+    print-color-adjust: exact;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+}
