@@ -27,6 +27,23 @@ The print version is the same page reduced to one A4 sheet: use the
 scale 100%) and "Save as PDF". `npm run check:print` needs Chromium once:
 `npx playwright install chromium`.
 
+## Variants
+
+Each CV variant exists in French and English and is chosen at build time
+with a Vite mode `<variant>-<lang>`, so a build contains exactly one of them.
+
+```sh
+npm run dev -- --mode basic-en              # browse a variant locally
+npm run check:print -- ai-media-fr basic-fr # check them and write dist-print/<mode>.pdf
+```
+
+- `basic` lives in `src/data/cv/` and is the only variant deployed
+  (`basic-fr`, the default mode).
+- Other variants live in `src/data/cv/private/`, which git ignores: they
+  never reach the public repository or GitHub Pages. Back them up
+  separately.
+- A variant may spread the basic data and override only what changes.
+
 ## Architecture
 
 ```
