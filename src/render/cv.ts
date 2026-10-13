@@ -1,4 +1,4 @@
-import type { Cv, UiLabels } from '../data/types';
+import type { ContactLink, Cv, UiLabels } from '../data/types';
 import { el } from './dom';
 import { renderExperience } from './experience';
 import { renderHeader } from './header';
@@ -6,10 +6,13 @@ import { renderProject } from './project';
 import { renderEducation, renderLabelledList, renderLanguages, renderSection } from './sections';
 
 /** Screen-only controls. Behaviour is attached by the features modules. */
-function renderToolbar(ui: UiLabels): HTMLElement {
+/** The language switch names the other language in that language. */
+function renderToolbar(ui: UiLabels, alternate?: ContactLink, alternateLang?: string): HTMLElement {
   return el(
     'nav',
     { class: 'toolbar', 'aria-label': 'Actions' },
+    alternate &&
+      el('a', { class: 'button', href: alternate.href, lang: alternateLang }, alternate.label),
     el(
       'button',
       { class: 'button', type: 'button', 'data-action': 'toggle-theme' },
@@ -54,7 +57,7 @@ export function renderCv(cv: Cv): HTMLElement {
   return el(
     'div',
     { class: 'page' },
-    renderToolbar(ui),
+    renderToolbar(ui, cv.alternate, cv.lang === 'fr' ? 'en' : 'fr'),
     renderHeader(cv.person, { label: ui.onlineVersion, url: cv.url }),
     el(
       'div',

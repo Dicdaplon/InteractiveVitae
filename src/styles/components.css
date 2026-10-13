@@ -11,6 +11,7 @@
 
 .button {
   font: inherit;
+  text-decoration: none;
   font-size: var(--step--1);
   line-height: var(--leading-ui);
   padding: var(--sp-2) var(--sp-3);

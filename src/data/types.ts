@@ -104,6 +104,8 @@ export interface Cv {
   lang: string;
   /** Public URL of the interactive version, printed in the header. Omit for unpublished variants. */
   url?: string;
+  /** The same CV in the other language, shown in the toolbar. */
+  alternate?: ContactLink;
   person: Person;
   summary: string;
   experiences: Experience[];
