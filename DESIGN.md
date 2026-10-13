@@ -1,8 +1,9 @@
 # InteractiveVitae — Design system
 
-Art direction: **"Bench instrument"**. A CV that reads like a well-labelled piece of lab equipment: neutral
-cool surfaces, near-black ink, one signal-teal accent, monospace for anything measured (dates, versions,
-tech names), hairlines instead of decoration. Credible first, flavoured second.
+Art direction: **"Bench instrument", moss and paper**. A CV that reads like a well-labelled piece of lab
+equipment, drawn by the same hand as the sibling projects (l’école du loup(é), AudioLab): warm paper
+surfaces, near-black ink, one moss accent, monospace for anything measured (dates, versions, tech
+names), hairlines instead of decoration. Credible first, flavoured second.
 
 Source of truth: `src/styles/tokens.css`. This file explains it.
 
@@ -19,15 +20,15 @@ The **method** is kept unchanged from `MusicalBook/docs/plan/02-direction-artist
 
 The **register** changes:
 
-| MusicalBook (long-form course)                       | InteractiveVitae (CV)                                                      | Why                                                                     |
-| ---------------------------------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Warm paper `#fbf8f3`, ember accent                   | Cool lab white `#f6f8f9`, teal accent                                      | Engineering/signal register; continuity with the existing PDF CV (teal) |
-| Serif body 17→19px, leading 1.7                      | Sans body 15→16px, leading 1.55                                            | Scanned in ~30 s, dense, mostly bullets                                 |
-| Serif + Plex Sans + Plex Mono                        | IBM Plex Sans + IBM Plex Mono only                                         | One family; mono carries the "measured data" layer                      |
-| Radii 3/6/12px                                       | 2/4/8px                                                                    | Crisper, more technical                                                 |
-| Category colours, figure mat, visited links, code bg | Dropped                                                                    | No such content in a CV                                                 |
-| —                                                    | `--color-highlight`, `--color-tag-bg/ink`, `--color-timeline`, `--sidebar` | Skill filter, tech chips, timeline, two-column layout                   |
-| —                                                    | Full `@media print` token block                                            | The printed A4 is a first-class output                                  |
+| MusicalBook (long-form course)                       | InteractiveVitae (CV)                                                      | Why                                                                          |
+| ---------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Warm paper `#fbf8f3`, ember accent                   | Warm paper `#f7f6f2`, moss accent                                          | Same family; moss is the sibling projects' signal colour, ember stays theirs |
+| Serif body 17→19px, leading 1.7                      | Sans body 15→16px, leading 1.55                                            | Scanned in ~30 s, dense, mostly bullets                                      |
+| Serif + Plex Sans + Plex Mono                        | Plex Sans + Plex Mono; Source Serif 4 for the name only                    | Scannable sans body; the serif "voice" ties the name to the family           |
+| Radii 3/6/12px                                       | 2/4/8px                                                                    | Crisper, more technical                                                      |
+| Category colours, figure mat, visited links, code bg | Dropped                                                                    | No such content in a CV                                                      |
+| —                                                    | `--color-highlight`, `--color-tag-bg/ink`, `--color-timeline`, `--sidebar` | Skill filter, tech chips, timeline, two-column layout                        |
+| —                                                    | Full `@media print` token block                                            | The printed A4 is a first-class output                                       |
 
 Dropped tokens: `--color-code`, `--color-figure-mat`, `--color-border-input`, `--color-link-visited`,
 `--color-danger`, `--color-success`, `--color-cat-*`, `--measure-max`, `--measure-narrow`, `--gutter-lg`,
@@ -35,43 +36,44 @@ Dropped tokens: `--color-code`, `--color-figure-mat`, `--color-border-input`, `-
 
 ## 2. Palette
 
-Ratios are on canvas / surface unless stated. "UI" = non-text graphics, target ≥ 3:1.
+Ratios are on canvas unless stated, computed from `tokens.css`. "UI" = non-text graphics, target ≥ 3:1.
 
-| Token                   | Light     | Dark      | Print       | Role / ratio                                                          |
-| ----------------------- | --------- | --------- | ----------- | --------------------------------------------------------------------- |
-| `--color-canvas`        | `#f6f8f9` | `#0d1215` | `#ffffff`   | Page                                                                  |
-| `--color-surface`       | `#ffffff` | `#141b1f` | `#ffffff`   | Cards, sidebar                                                        |
-| `--color-sunken`        | `#edf1f3` | `#1a2227` | `#f2f4f5`   | Insets, filter bar                                                    |
-| `--color-ink`           | `#121a20` | `#e2e8eb` | `#111417`   | Body. 16.51 / 15.23 / 18.48 — AAA                                     |
-| `--color-ink-muted`     | `#475560` | `#a1adb5` | `#3d4851`   | Meta, secondary. 7.20 / 8.22 / 9.36                                   |
-| `--color-ink-faint`     | `#7a8790` | `#6b7882` | `#87939c`   | **UI only**. 3.46 / 4.16 / 3.14                                       |
-| `--color-line`          | `#dbe2e6` | `#232d33` | `#d5dbdf`   | Decorative separators                                                 |
-| `--color-line-strong`   | `#bfc9cf` | `#35424a` | `#aab4ba`   | Card borders, hairlines                                               |
-| `--color-accent`        | `#0d6c78` | `#5ec3ce` | `#0b5f6a`   | The accent. 5.74 / 9.13 / 7.34                                        |
-| `--color-accent-on`     | `#ffffff` | `#0d1215` | `#ffffff`   | Text on accent. 6.12 / 9.13 / 7.34                                    |
-| `--color-accent-subtle` | `#e0eff1` | `#11282c` | `#e4eff0`   | Tinted fill. ink 14.89 / 12.45 / 15.76                                |
-| `--color-link`          | `#0b5e69` | `#86d4dc` | `#0b5f6a`   | Links. 6.99 / 11.18 / 7.34                                            |
-| `--color-focus`         | `#0d6c78` | `#8fdbe3` | transparent | Focus ring. 5.74 / 12.03                                              |
-| `--color-selection`     | `#c7e6ea` | `#1e3c41` | `#c7e6ea`   | ink on it 13.34 / 9.55                                                |
-| `--color-highlight`     | `#cbe7eb` | `#1a4146` | transparent | Filter match. ink 13.54 / 8.99; muted 5.91 / 4.85; accent 4.71 / 5.39 |
-| `--color-tag-bg`        | `#e2e8ec` | `#212c33` | `#eef1f3`   | Chip fill (decorative)                                                |
-| `--color-tag-ink`       | `#2b3843` | `#c8d2d8` | `#262f36`   | Chip text. 9.71 / 9.28 / 12.00 on tag-bg                              |
-| `--color-timeline`      | `#6a959c` | `#4c7a81` | `#aab4ba`   | Timeline rule. 3.08 / 3.96 (UI); decorative on paper                  |
+| Token                   | Light     | Dark      | Print         | Role / ratio (light / dark / print)              |
+| ----------------------- | --------- | --------- | ------------- | ------------------------------------------------ |
+| `--color-canvas`        | `#f7f6f2` | `#0d110f` | `#ffffff`     | Page (warm paper)                                |
+| `--color-surface`       | `#ffffff` | `#141917` | `#ffffff`     | Cards                                            |
+| `--color-sunken`        | `#eeebe4` | `#1b211e` | `#f2f4f5`     | Insets, filter bar                               |
+| `--color-ink`           | `#1b1a17` | `#e4e0d6` | `#111417`     | Body. 16.09 / 14.43 / 18.48 — AAA                |
+| `--color-ink-muted`     | `#55514a` | `#a8a297` | `#45413b`     | Meta, secondary. 7.29 / 7.50 / 10.13             |
+| `--color-ink-faint`     | `#878175` | `#717a73` | `#87939c`     | **UI only**. 3.58 / 4.29 / 3.14                  |
+| `--color-line`          | `#e2ddd2` | `#232a26` | `#d5dbdf`     | Decorative separators                            |
+| `--color-line-strong`   | `#c9c2b4` | `#344039` | `#aab4ba`     | Card borders, hairlines                          |
+| `--color-accent`        | `#0f5c4e` | `#7fd3b8` | `#0f5c4e`     | Moss, the only accent. 7.30 / 10.79 / 7.89       |
+| `--color-accent-on`     | `#ffffff` | `#0d110f` | `#ffffff`     | Text on accent. 7.89 / 10.79 / 7.89              |
+| `--color-accent-subtle` | `#e0efe9` | `#12281f` | `#e3efe9`     | Tinted fill                                      |
+| `--color-link`          | `#0a4a3f` | `#a9ead3` | `#0f5c4e`     | Links. 9.41 / 13.94 / 7.89                       |
+| `--color-focus`         | `#0f5c4e` | `#a9ead3` | `transparent` | Focus ring (UI)                                  |
+| `--color-selection`     | `#cde7dd` | `#1c3d33` | `#cde7dd`     | Text selection                                   |
+| `--color-highlight`     | `#cde7dd` | `#1c3d33` | `transparent` | Filter match, always paired with the accent rule |
+| `--color-tag-bg`        | `#e8e5dd` | `#222a26` | `#eef1f3`     | Chip fill (decorative)                           |
+| `--color-tag-ink`       | `#2e2b26` | `#cfcac0` | `#262f36`     | Chip text. 11.20 / 9.01 / 12.00 on tag-bg        |
+| `--color-timeline`      | `#5f9585` | `#4f8a78` | `#aab4ba`     | Timeline rule (UI); decorative on paper          |
 
 Palette rules:
 
-1. **Teal is the only hue.** Highlight, selection, timeline and focus are all teal tints/shades. No second accent, no traffic lights for skill levels.
+1. **Moss is the only hue.** Highlight, selection, timeline and focus are moss tints/shades. No second accent; ember belongs to the `loup(…)` brands.
 2. **Highlight never stands alone.** `--color-highlight` is only 1.30:1 (light) against the surface, so a matched card also gets a 3px `--color-accent` left rule (and optionally `--shadow-1`). Non-matching cards may drop to `opacity: .55`; never below — their text must stay readable.
-3. **Accent is for structure, not decoration**: section rule, active filter chip, current-role marker, links. Not for body text paragraphs.
-4. Print accent `#0b5f6a` maps to ~`#565656` in greyscale: distinct from black body text, still 7.34:1.
+3. **Accent is for structure, not decoration**: section rules, the header "beat" mark, active filter chip, links. Not for body text paragraphs.
+4. Print accent `#0f5c4e` maps to ~`#434343` in greyscale: distinct from black body text, still 7.89:1.
 
 ## 3. Typography
 
 **IBM Plex Sans** (SIL OFL 1.1, variable build) for everything, **IBM Plex Mono** for dates, periods
-(`2021 — 2024`), version-like data and tech chips. Both are self-hosted as woff2 through
-`@fontsource-variable/ibm-plex-sans` and `@fontsource/ibm-plex-mono` (imported in `main.ts`,
-`font-display: swap`), so screen and print metrics are the same on every machine, which the one-page
-print check relies on. The system stack only covers a failed font load. `--font-ui` aliases
+(`2021 — 2024`), version-like data and tech chips, and **Source Serif 4** (`--font-display`) for the
+name only: the "voice" shared with the sibling projects' wordmarks. All are self-hosted as woff2 through
+`@fontsource` packages imported in `main.ts` (`font-display: swap`), so screen and print metrics are the
+same on every machine, which the one-page print check relies on. The system stack only covers a failed
+font load. `--font-ui` aliases
 `--font-content` so components written against either name stay consistent.
 
 Headings use the same family; hierarchy comes from weight (600 for h1/h2, 600 for card titles, 400 body)
@@ -102,14 +104,14 @@ Section headings: uppercase is allowed only at `--step--1` with `letter-spacing:
 ## 5. Shadows
 
 - `--shadow-1`: card hover and highlighted (matched) card.
-- `--shadow-2`: popover, project detail dialog.
+- `--shadow-2`: reserved; nothing uses it yet.
 
 Borders do the everyday work. In dark mode both shadows become a `--color-line-strong` ring. In print both are `none`.
 
 ## 6. Motion
 
 Durations: `--dur-1` 120ms (hover, focus, chip toggle), `--dur-2` 180ms (highlight fade, accordion),
-`--dur-3` 260ms (dialog). Easing: `--ease-out` for entering, `--ease-in` for leaving.
+`--dur-3` 260ms (reserved). Easing: `--ease-out` for entering, `--ease-in` for leaving.
 
 1. Content never animates in on load. The CV is fully readable without JS.
 2. Only user-triggered changes animate: filter toggle, hover, expand, theme switch.
@@ -146,19 +148,24 @@ both dark-theme selectors. `@page` cannot read custom properties, so margins liv
 - **Target: exactly one page**, enforced by `npm run check:print` (one PDF page, at most 95% of the
   text block filled). The screen is the detailed version; paper is the summary.
 - **Deterministic**: theme, active filter and open details never change the printed page.
-- **Printed**: header (with "Version interactive et détails :" and the CV URL), profile, each entry's
-  title, period, context, summary and key technologies, project site URLs, the aside sections.
-- **Hidden**: toolbar, filter bar, every `.entry__details` (even when open), repository links, and
-  anything marked `printHidden` in the data (`data-print-hidden`).
+- **Printed**: header (with the interactive version's URL), profile, each experience's title, period,
+  context, summary and key technologies, and the aside sections.
+- **Per entry**, the data's `print` option adjusts this: `'compact'` prints the heading line only,
+  `{ highlights: n }` also prints the first n `details` bullets, `'hidden'` leaves the entry out. Keep
+  printed bullets to one line each.
+- **Projects** print as a three-column strip: a clickable QR code to the live site, name, year and one
+  context line. Summaries, technologies and URL text stay on screen.
+- **Hidden**: toolbar, filter bar, every `.entry__details` (even when open), and list items marked
+  `printHidden` (`data-print-hidden`).
 - **Technologies** print as a plain mono list separated by " · ", no chip fill, so nothing depends on
   background graphics.
-- **Links**: visible link text is already the bare URL, so no `::after` URL injection.
+- **Header mark**: the "beat" (accent rule plus an offset hairline) prints with `print-color-adjust: exact`.
 - **Page breaks**: `break-inside: avoid` on entries and the header, `break-after: avoid` on section
   headings, `orphans: 3; widows: 3`. On one page they only matter when content overflows.
 - **Layout**: two columns, `--sidebar: 50mm` on a 186mm text block; header in two columns (identity
   left, contact right).
-- **If content grows**: shorten summaries first, then mark the least relevant items `printHidden`.
-  Never rely on the print dialog's scale.
+- **If content grows**: shorten summaries and bullets first, then use `print: 'compact'` or `'hidden'`
+  on the least relevant entries. Never rely on the print dialog's scale.
 
 ## 8. Guardrails
 
