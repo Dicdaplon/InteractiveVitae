@@ -3,6 +3,8 @@
 // Usage: npm run check:print [-- <mode>...]   e.g. -- basic-fr ai-media-en
 // Without arguments, the public variant is checked in both languages.
 import { mkdir, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { chromium } from 'playwright';
 import { build, preview } from 'vite';
 
@@ -39,8 +41,10 @@ const failures = [];
 await mkdir(OUT_DIR, { recursive: true });
 
 for (const mode of modes) {
-  await build({ mode, logLevel: 'warn' });
-  const server = await preview({ mode, preview: { port: 0 }, logLevel: 'warn' });
+  // Build into a scratch folder so the deployable dist/ is never overwritten.
+  const outDir = join(tmpdir(), 'interactive-vitae-print', mode);
+  await build({ mode, logLevel: 'warn', build: { outDir, emptyOutDir: true } });
+  const server = await preview({ mode, build: { outDir }, preview: { port: 0 }, logLevel: 'warn' });
   const url = server.resolvedUrls?.local[0];
   try {
     await checkMode(mode, url);
