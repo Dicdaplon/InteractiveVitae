@@ -34,7 +34,7 @@ export function renderExperience(experience: Experience, ui: UiLabels): HTMLElem
     el(
       'ul',
       { class: 'experience__highlights' },
-      ...experience.highlights.map((highlight) => el('li', {}, highlight))
+      ...experience.details.map((detail) => el('li', {}, detail))
     ),
     el(
       'div',

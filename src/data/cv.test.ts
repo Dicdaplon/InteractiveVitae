@@ -1,28 +1,42 @@
 import { describe, expect, it } from 'vitest';
 import { cvFr } from './cv.fr';
+import type { Entry } from './types';
 
-describe('cvFr content', () => {
-  it('uses unique experience ids that are safe in DOM ids', () => {
-    const ids = cvFr.experiences.map((experience) => experience.id);
+const entries: Entry[] = [...cvFr.experiences];
+
+describe('cvFr entries', () => {
+  it('uses unique ids that are safe in DOM ids', () => {
+    const ids = entries.map((entry) => entry.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const id of ids) expect(id).toMatch(/^[a-z][a-z0-9-]*$/);
   });
 
-  it('gives every experience at least one highlight and technology', () => {
-    for (const experience of cvFr.experiences) {
-      expect(experience.highlights.length, experience.id).toBeGreaterThan(0);
-      expect(experience.technologies.length, experience.id).toBeGreaterThan(0);
+  it('keeps summaries short enough for the printed page', () => {
+    for (const entry of entries) {
+      expect(entry.summary.length, entry.id).toBeGreaterThan(0);
+      expect(entry.summary.length, entry.id).toBeLessThanOrEqual(170);
     }
   });
 
-  it('lists technologies without duplicates inside an experience', () => {
-    for (const experience of cvFr.experiences) {
-      expect(new Set(experience.technologies).size, experience.id).toBe(
-        experience.technologies.length
-      );
+  it('lists technologies without duplicates', () => {
+    for (const entry of entries) {
+      expect(new Set(entry.technologies).size, entry.id).toBe(entry.technologies.length);
     }
   });
 
+  it('picks one to five key technologies from the full list', () => {
+    for (const entry of entries) {
+      expect(entry.keyTechnologies.length, entry.id).toBeGreaterThan(0);
+      expect(entry.keyTechnologies.length, entry.id).toBeLessThanOrEqual(5);
+      expect(new Set(entry.keyTechnologies).size, entry.id).toBe(entry.keyTechnologies.length);
+      for (const tech of entry.keyTechnologies) {
+        expect(entry.technologies, entry.id).toContain(tech);
+      }
+    }
+  });
+});
+
+describe('cvFr links', () => {
   it('only links to https URLs', () => {
     for (const link of cvFr.person.links) expect(link.href).toMatch(/^https:\/\//);
   });
