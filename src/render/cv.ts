@@ -2,6 +2,7 @@ import type { Cv, UiLabels } from '../data/types';
 import { el } from './dom';
 import { renderExperience } from './experience';
 import { renderHeader } from './header';
+import { renderProject } from './project';
 import {
   renderEducation,
   renderInlineList,
@@ -68,6 +69,11 @@ export function renderCv(cv: Cv): HTMLElement {
           ui.experience,
           renderFilterBar(ui),
           ...cv.experiences.map((experience) => renderExperience(experience, ui))
+        ),
+        renderSection(
+          'projects',
+          ui.projects,
+          ...cv.projects.map((project) => renderProject(project, ui))
         ),
         renderSection('soft-skills', ui.softSkills, renderLabelledList(cv.softSkills))
       ),

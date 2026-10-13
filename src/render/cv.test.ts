@@ -3,6 +3,7 @@ import { cvFr } from '../data/cv.fr';
 import { renderCv } from './cv';
 import { el } from './dom';
 import { renderEntry } from './entry';
+import { bareUrl } from './project';
 
 describe('el', () => {
   it('treats strings as text, never as markup', () => {
@@ -28,9 +29,23 @@ describe('renderCv', () => {
     expect(headings[0]?.textContent).toBe(cvFr.person.name);
   });
 
-  it('renders one article per experience, in content order', () => {
+  it('renders one article per experience then per project, in content order', () => {
     const ids = [...page.querySelectorAll('article.entry')].map((node) => node.id);
-    expect(ids).toEqual(cvFr.experiences.map((experience) => `experience-${experience.id}`));
+    expect(ids).toEqual([
+      ...cvFr.experiences.map((experience) => `experience-${experience.id}`),
+      ...cvFr.projects.map((project) => `project-${project.id}`),
+    ]);
+  });
+
+  it('links each project to its site with a bare URL as text', () => {
+    for (const project of cvFr.projects) {
+      const link = page.querySelector<HTMLAnchorElement>(
+        `#project-${project.id} [data-link="site"]`
+      )!;
+      expect(link.getAttribute('href')).toBe(project.url);
+      expect(link.textContent).toBe(bareUrl(project.url));
+      expect(link.rel).toBe('noopener');
+    }
   });
 
   it('shows summary and key technologies outside the collapsed details', () => {
@@ -83,5 +98,14 @@ describe('renderEntry', () => {
       cvFr.ui
     );
     expect(node.querySelector('details')).toBeNull();
+  });
+});
+
+describe('bareUrl', () => {
+  it('drops the scheme and the trailing slash', () => {
+    expect(bareUrl('https://dicdaplon.github.io/LoloupLive/')).toBe(
+      'dicdaplon.github.io/LoloupLive'
+    );
+    expect(bareUrl('https://ecoleduloup.fr')).toBe('ecoleduloup.fr');
   });
 });

@@ -363,3 +363,19 @@
   margin-left: var(--sp-2);
   color: var(--color-ink-faint);
 }
+
+/* --- Projects: dashed rule tells personal work apart from employment --- */
+
+.entry--project {
+  border-left-style: dashed;
+}
+
+.entry__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-4);
+  margin-top: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+}
