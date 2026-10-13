@@ -30,7 +30,8 @@
 
   .cv-header {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    /* The title keeps its natural width; contact details wrap on the right. */
+    grid-template-columns: max-content minmax(0, 1fr);
     column-gap: var(--sp-6);
     align-items: end;
     margin-bottom: var(--sp-5);
