@@ -1,0 +1,264 @@
+/* =========================================================================
+   Tokens — InteractiveVitae, art direction "Bench instrument"
+   Derived from MusicalBook "Quinte du loup" (same method, new register).
+   Every contrast ratio below was computed with the WCAG 2.1 relative
+   luminance formula on the exact hex pairs given. See DESIGN.md.
+
+   RULE: raw colour values live in this file only. Every other stylesheet
+   consumes var(--token). One accent per theme: teal.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* --- Surfaces: cool lab white, never pure #fff for the canvas --- */
+  --color-canvas: #f6f8f9; /* page background */
+  --color-surface: #ffffff; /* cards, sidebar panel */
+  --color-sunken: #edf1f3; /* insets, filter bar, code */
+
+  /* --- Ink (ratios on canvas / surface / sunken) --- */
+  --color-ink: #121a20; /* 16.51 / 17.58 / 15.47 — AAA */
+  --color-ink-muted: #475560; /*  7.20 /  7.67 /  6.75 — AAA on canvas/surface, AA on sunken */
+  --color-ink-faint: #7a8790; /*  3.46 /  3.69 /  3.24 — UI ONLY (icons, rules, disabled), never body text */
+
+  /* --- Rules --- */
+  --color-line: #dbe2e6; /* decorative separators — UI only, no contrast requirement */
+  --color-line-strong: #bfc9cf; /* card borders, 1.58:1 on canvas — decorative; pair with a fill change for state */
+
+  /* --- Single accent: signal teal --- */
+  --color-accent: #0d6c78; /*  5.74 canvas / 6.12 surface / 5.38 sunken — AA text, >=3:1 UI */
+  --color-accent-on: #ffffff; /*  6.12 on accent — AA (buttons, active chip) */
+  --color-accent-subtle: #e0eff1; /* tinted fill; ink on it 14.89, accent on it 5.18 — AA */
+
+  /* --- Links: same hue as accent, one step darker for long underlined runs --- */
+  --color-link: #0b5e69; /* 6.99 canvas / 7.45 surface / 6.31 accent-subtle — AA (AAA on surface) */
+
+  /* --- Signals --- */
+  --color-focus: #0d6c78; /* focus ring, 5.74 on canvas — UI >= 3:1. Ring = 2px solid + 2px offset */
+  --color-selection: #c7e6ea; /* ::selection background; ink on it 13.34 — AAA */
+
+  /* --- CV-specific --- */
+  --color-highlight: #cbe7eb; /* skill-filter match on an experience card.
+                                 ink 13.54, ink-muted 5.91, accent 4.71 — all AA.
+                                 1.30:1 vs surface: ALWAYS pair with an accent border/rule, never fill alone */
+  --color-tag-bg: #e2e8ec; /* technology chip fill, 1.16:1 vs canvas — decorative */
+  --color-tag-ink: #2b3843; /* chip text, 9.71 on tag-bg — AAA */
+  --color-timeline: #6a959c; /* vertical timeline rule + nodes, 3.08 canvas / 3.29 surface — UI >= 3:1 */
+
+  /* --- Typography ---------------------------------------------------------
+     One family, two optical roles. IBM Plex Sans (SIL OFL 1.1, variable
+     build "IBM Plex Sans Var") to be self-hosted later in /fonts/; until
+     then the system stack takes over with no layout breakage.
+     Mono: IBM Plex Mono 400/500 (OFL) for dates, versions, tech chips. */
+  --font-content:
+    'IBM Plex Sans', 'IBM Plex Sans Var', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-ui: var(--font-content);
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, 'Liberation Mono', Menlo,
+    monospace;
+
+  /* Fluid steps, linear between 360px and 1280px viewport, root 16px.
+     Denser than MusicalBook: a CV is scanned, not read for 10 minutes. */
+  --step--2: clamp(0.75rem, 0.7378rem + 0.0543vw, 0.78125rem); /* 12   -> 12.5  dates, captions */
+  --step--1: clamp(0.84375rem, 0.8315rem + 0.0543vw, 0.875rem); /* 13.5 -> 14    chips, meta, UI */
+  --step-0: clamp(0.9375rem, 0.913rem + 0.1087vw, 1rem); /* 15   -> 16    BODY */
+  --step-1: clamp(1.0625rem, 1.0136rem + 0.2174vw, 1.1875rem); /* 17   -> 19    card title (h3) */
+  --step-2: clamp(1.25rem, 1.1766rem + 0.3261vw, 1.4375rem); /* 20   -> 23    section (h2) */
+  --step-3: clamp(1.5rem, 1.3777rem + 0.5435vw, 1.8125rem); /* 24   -> 29    role line / tagline */
+  --step-4: clamp(1.875rem, 1.6793rem + 0.8696vw, 2.375rem); /* 30   -> 38    name (h1) */
+
+  --leading-body: 1.55; /* sans body, short paragraphs and bullets */
+  --leading-tight: 1.15; /* name, h2 */
+  --leading-snug: 1.3; /* card titles, two-line bullets */
+  --leading-ui: 1.4; /* chips, meta lines, buttons */
+
+  --measure: 72ch; /* bullet text max line length */
+
+  /* --- Spacing, 4px base, no off-scale values --- */
+  --sp-1: 0.25rem; /*   4 */
+  --sp-2: 0.5rem; /*   8 */
+  --sp-3: 0.75rem; /*  12 */
+  --sp-4: 1rem; /*  16 */
+  --sp-5: 1.5rem; /*  24 */
+  --sp-6: 2rem; /*  32 */
+  --sp-7: 3rem; /*  48 */
+  --sp-8: 4rem; /*  64 */
+  --sp-9: 6rem; /*  96 */
+  --sp-10: 8rem; /* 128 */
+
+  /* --- Radii: technical register, small and crisp --- */
+  --r-1: 2px; /* chips, focus ring corners */
+  --r-2: 4px; /* buttons, inputs, inline code */
+  --r-3: 8px; /* cards, panels */
+  --r-pill: 999px; /* RESERVED for the skill-filter toggle chips. Nowhere else. */
+
+  /* --- Shadows: two, no more. Border first, shadow second. --- */
+  --shadow-1:
+    0 1px 2px rgba(18, 26, 32, 0.06), 0 1px 6px rgba(18, 26, 32, 0.05); /* card hover / highlighted card */
+  --shadow-2:
+    0 4px 12px rgba(18, 26, 32, 0.08), 0 12px 32px rgba(18, 26, 32, 0.1); /* popover, project detail dialog */
+
+  /* --- Layout --- */
+  --container: 1200px; /* sidebar + main column, centred */
+  --gutter: 1rem; /* 16px page side padding on mobile; components may use --sp-5 >= 720px */
+  --sidebar: 19rem; /* 304px left column (identity, contact, skills) >= 1024px */
+
+  /* --- Motion --- */
+  --dur-1: 120ms; /* state change: hover, focus, chip toggle */
+  --dur-2: 180ms; /* local reveal: highlight fade, accordion */
+  --dur-3: 260ms; /* panel, dialog */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* ------------------------------------------------------------------------- */
+/* Dark theme. Explicit user choice (data-theme on <html>) beats the OS.      */
+/* Ratios on canvas / surface / sunken.                                       */
+/* ------------------------------------------------------------------------- */
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-canvas: #0d1215; /* oscilloscope night, never #000 */
+  --color-surface: #141b1f;
+  --color-sunken: #1a2227;
+
+  --color-ink: #e2e8eb; /* 15.23 / 14.07 / 13.04 — AAA, not #fff (halation) */
+  --color-ink-muted: #a1adb5; /*  8.22 /  7.59 /  7.04 — AAA */
+  --color-ink-faint: #6b7882; /*  4.16 /  3.84 /  3.56 — UI ONLY */
+
+  --color-line: #232d33; /* decorative */
+  --color-line-strong: #35424a; /* card borders, 1.68:1 on surface — decorative */
+
+  --color-accent: #5ec3ce; /* 9.13 / 8.43 / 7.81 — AAA */
+  --color-accent-on: #0d1215; /* 9.13 on accent — AAA */
+  --color-accent-subtle: #11282c; /* ink on it 12.45, accent on it 7.46 */
+
+  --color-link: #86d4dc; /* 11.18 / 10.33 / 9.14 on accent-subtle — AAA */
+
+  --color-focus: #8fdbe3; /* 12.03 on canvas */
+  --color-selection: #1e3c41; /* ink on it 9.55 — AAA */
+
+  --color-highlight: #1a4146; /* ink 8.99, ink-muted 4.85, accent 5.39 — AA; 1.57:1 vs surface, pair with accent rule */
+  --color-tag-bg: #212c33; /* 1.22:1 vs surface — decorative */
+  --color-tag-ink: #c8d2d8; /* 9.28 on tag-bg — AAA */
+  --color-timeline: #4c7a81; /* 3.96 canvas / 3.65 surface — UI >= 3:1 */
+
+  /* shadows are invisible on dark: a lighter border carries the elevation */
+  --shadow-1: 0 0 0 1px var(--color-line-strong);
+  --shadow-2: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--color-line-strong);
+}
+
+/* The OS decides only when the user has not chosen. Keep in sync with the block above. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --color-canvas: #0d1215;
+    --color-surface: #141b1f;
+    --color-sunken: #1a2227;
+
+    --color-ink: #e2e8eb;
+    --color-ink-muted: #a1adb5;
+    --color-ink-faint: #6b7882;
+
+    --color-line: #232d33;
+    --color-line-strong: #35424a;
+
+    --color-accent: #5ec3ce;
+    --color-accent-on: #0d1215;
+    --color-accent-subtle: #11282c;
+
+    --color-link: #86d4dc;
+
+    --color-focus: #8fdbe3;
+    --color-selection: #1e3c41;
+
+    --color-highlight: #1a4146;
+    --color-tag-bg: #212c33;
+    --color-tag-ink: #c8d2d8;
+    --color-timeline: #4c7a81;
+
+    --shadow-1: 0 0 0 1px var(--color-line-strong);
+    --shadow-2: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--color-line-strong);
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+/* Print — A4 paper. MUST come last in this file.                             */
+/* `:root:root` has specificity (0,2,0), equal to the dark selectors above,   */
+/* so source order makes print win over both dark-theme paths.                */
+/* Ratios on white paper (#ffffff).                                           */
+/* ------------------------------------------------------------------------- */
+
+@media print {
+  :root:root {
+    color-scheme: light;
+
+    --color-canvas: #ffffff;
+    --color-surface: #ffffff;
+    --color-sunken: #f2f4f5; /* barely-there fill; most printers drop it, layout must not depend on it */
+
+    --color-ink: #111417; /* 18.48 — AAA, near-black: toner black, not rich black */
+    --color-ink-muted: #3d4851; /*  9.36 — darker than screen: thin grey text breaks up on laser printers */
+    --color-ink-faint: #87939c; /*  3.14 — rules and bullets only */
+
+    --color-line: #d5dbdf;
+    --color-line-strong: #aab4ba; /* 2.11 — hairlines print visibly at 0.5pt */
+
+    /* Deep teal: 7.34:1 on white; greyscale equivalent ~#565656, so headings
+       and rules stay distinct from black body text on a mono printer. */
+    --color-accent: #0b5f6a;
+    --color-accent-on: #ffffff; /* 7.34 */
+    --color-accent-subtle: #e4eff0; /* ink 15.76, accent 6.26 */
+    --color-link: #0b5f6a; /* 7.34 — links are printed with their URL, see DESIGN.md */
+
+    --color-focus: transparent; /* no focus ring on paper */
+    --color-selection: #c7e6ea;
+
+    --color-highlight: transparent; /* filter state is never printed; ink stays 18.48 on paper */
+    --color-tag-bg: #eef1f3; /* chips degrade to text + hairline if fills are dropped */
+    --color-tag-ink: #262f36; /* 12.00 on tag-bg */
+    --color-timeline: #aab4ba; /* 2.11 — decorative on paper */
+
+    /* Type in pt for an A4 CV */
+    --step--2: 7.5pt; /* dates, footer */
+    --step--1: 8.5pt; /* chips, meta */
+    --step-0: 9.5pt; /* BODY */
+    --step-1: 10.5pt; /* card title */
+    --step-2: 12pt; /* section */
+    --step-3: 14pt; /* role line */
+    --step-4: 22pt; /* name */
+
+    --leading-body: 1.38;
+    --leading-tight: 1.1;
+    --leading-snug: 1.25;
+    --leading-ui: 1.3;
+
+    --measure: none; /* the page box sets the measure */
+
+    /* Spacing in pt, same 4-unit rhythm halved (2pt base) */
+    --sp-1: 2pt;
+    --sp-2: 4pt;
+    --sp-3: 6pt;
+    --sp-4: 8pt;
+    --sp-5: 12pt;
+    --sp-6: 16pt;
+    --sp-7: 22pt;
+    --sp-8: 28pt;
+    --sp-9: 36pt;
+    --sp-10: 48pt;
+
+    --shadow-1: none;
+    --shadow-2: none;
+
+    --container: 100%;
+    --gutter: 0; /* @page margins handle the edges */
+    --sidebar: 54mm; /* left column on a 182mm text block (A4 minus 14mm margins) */
+
+    --dur-1: 0ms;
+    --dur-2: 0ms;
+    --dur-3: 0ms;
+  }
+}
