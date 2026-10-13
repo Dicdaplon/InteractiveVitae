@@ -162,11 +162,10 @@ const cv: Cv = {
       period: '2026',
       url: 'https://ecoleduloup.fr',
       summary:
-        'Site d’enseignement musical conçu et développé seul : filtres biquad, détection de hauteur en temps réel et transcription audio dans le navigateur.',
+        'Site d’enseignement musical conçu et développé seul : exercices de mixage avec filtres biquad écrits à la main, réponse en fréquence et correction automatique.',
       details: [
         'Exercices de mixage : filtres biquad écrits à la main, réponse en fréquence, modèle gain/bruit/écrêtage corrigé automatiquement et testable hors navigateur.',
-        'Accordeur et vérification d’accords au micro : détection de hauteur CREPE et transcription Basic Pitch (TensorFlow.js), un seul contexte audio partagé.',
-        'Soliste génératif (ImprovRNN) isolé dans un Web Worker pour ne pas bloquer le son.',
+        'Prototype non publié : détection de hauteur (CREPE), transcription (Basic Pitch) et soliste génératif (ImprovRNN) en TensorFlow.js, isolé dans un Web Worker.',
         'Comptes et progression (Firebase Auth/Firestore), règles de sécurité testées sur émulateur.',
         'Décisions d’architecture écrites, revue d’architecture vérifiée par exécution.',
       ],
@@ -180,7 +179,7 @@ const cv: Cv = {
         'Next.js',
         'Firebase',
       ],
-      keyTechnologies: ['TypeScript', 'Web Audio', 'Traitement du signal', 'TensorFlow'],
+      keyTechnologies: ['TypeScript', 'Web Audio', 'Traitement du signal', 'Next.js'],
     },
     {
       id: 'lolouplive',
