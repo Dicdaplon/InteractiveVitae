@@ -22,19 +22,22 @@ export interface Entry {
   id: string;
   /** One or two lines, always visible and printed. */
   summary: string;
-  /** Bullets revealed on demand. Never printed. */
+  /** Bullets revealed on demand; printed only through `print.highlights`. */
   details: string[];
   /** Full list, most important first. Drives the technology filter. */
   technologies: string[];
   /** Shown on the card and printed. Subset of `technologies`, 1 to 5 entries. */
   keyTechnologies: string[];
-  /** Leaves the item out of the printed page only. */
-  printHidden?: boolean;
-  /** Prints only the heading line (title, period, context). */
-  printCompact?: boolean;
-  /** Number of leading `details` bullets also printed under the summary. */
-  printHighlights?: number;
+  /** How the one-page print shows this entry; summary and key technologies by default. */
+  print?: EntryPrint;
 }
+
+/**
+ * - `hidden`: left out of the printed page.
+ * - `compact`: heading line only (title, period, context).
+ * - `{ highlights: n }`: also prints the first n `details` bullets.
+ */
+export type EntryPrint = 'hidden' | 'compact' | { highlights: number };
 
 export interface Experience extends Entry {
   role: string;

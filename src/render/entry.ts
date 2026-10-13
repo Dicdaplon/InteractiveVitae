@@ -71,14 +71,15 @@ function renderDetails(entry: Entry, heading: EntryHeading, ui: UiLabels): HTMLE
  * remaining technologies inside a native <details>, so toggling needs no JS.
  */
 export function renderEntry(entry: Entry, heading: EntryHeading, ui: UiLabels): HTMLElement {
+  const highlights = typeof entry.print === 'object' ? entry.print.highlights : 0;
   return el(
     'article',
     {
       class: heading.modifier ? `entry ${heading.modifier}` : 'entry',
       id: heading.domId,
       'data-technologies': JSON.stringify(entry.technologies),
-      'data-print-hidden': entry.printHidden ? '' : undefined,
-      'data-print-compact': entry.printCompact ? '' : undefined,
+      'data-print-hidden': entry.print === 'hidden' ? '' : undefined,
+      'data-print-compact': entry.print === 'compact' ? '' : undefined,
     },
     el(
       'header',
@@ -94,11 +95,11 @@ export function renderEntry(entry: Entry, heading: EntryHeading, ui: UiLabels): 
       heading.context && el('p', { class: 'entry__context' }, heading.context)
     ),
     el('p', { class: 'entry__summary' }, entry.summary),
-    (entry.printHighlights ?? 0) > 0 &&
+    highlights > 0 &&
       el(
         'ul',
         { class: 'entry__print-highlights' },
-        ...entry.details.slice(0, entry.printHighlights).map((detail) => el('li', {}, detail))
+        ...entry.details.slice(0, highlights).map((detail) => el('li', {}, detail))
       ),
     renderTags(entry.keyTechnologies, ui.technologies),
     heading.extra,

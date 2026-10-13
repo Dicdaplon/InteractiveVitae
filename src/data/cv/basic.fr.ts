@@ -114,7 +114,7 @@ const cv: Cv = {
     },
     {
       id: 'technodigit',
-      printCompact: true,
+      print: 'compact',
       role: 'Développeur logiciel, nuages de points',
       company: 'Technodigit (Hexagon)',
       context: 'Logiciel 3D, ingénierie et métrologie',

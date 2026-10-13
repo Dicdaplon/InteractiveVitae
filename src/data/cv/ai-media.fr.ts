@@ -59,11 +59,11 @@ const cv: Cv = {
         'Git',
       ],
       keyTechnologies: ['TensorFlow', 'TFLite', 'Python', 'C++', 'STM32'],
-      printHighlights: 2,
+      print: { highlights: 2 },
     },
     {
       id: 'augmenta',
-      printHighlights: 1,
+      print: { highlights: 1 },
       role: 'Développeur C++ et JavaScript',
       company: 'Augmenta',
       context: 'Nuages de points temps réel pour le spectacle vivant',
@@ -91,7 +91,7 @@ const cv: Cv = {
     },
     {
       id: 'mylight',
-      printHighlights: 1,
+      print: { highlights: 1 },
       role: 'Développeur firmware',
       company: 'MyLight Systems',
       context: 'Énergie et IoT',
@@ -113,7 +113,6 @@ const cv: Cv = {
     },
     {
       id: 'technodigit',
-      printCompact: false,
       role: 'Développeur logiciel, nuages de points',
       company: 'Technodigit (Hexagon)',
       context: 'Logiciel 3D, ingénierie et métrologie',
