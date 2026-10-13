@@ -11,11 +11,13 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check:print": "node scripts/check-print.mjs"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
     "jsdom": "^30.1.2",
+    "playwright": "^1.64.0",
     "prettier": "^3.9.10",
     "typescript": "^7.0.2",
     "vite": "^8.3.4",
