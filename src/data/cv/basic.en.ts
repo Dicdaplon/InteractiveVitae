@@ -1,0 +1,287 @@
+import type { Cv } from '../types';
+
+const cv: Cv = {
+  lang: 'en',
+  person: {
+    name: 'Chafik Lekouara',
+    title: 'Embedded C/C++ Software Engineer — Real-Time, Signal Processing and 3D',
+    location: 'Lyon, France',
+    email: 'chafik.lekouara@gmail.com',
+    links: [
+      {
+        label: 'linkedin.com/in/chafiklekouara',
+        href: 'https://www.linkedin.com/in/chafiklekouara',
+      },
+    ],
+    notes: ['Open to remote work'],
+  },
+  summary:
+    'Software engineer since 2020, focused on embedded C/C++ since 2022: real-time firmware on ARM Cortex-M, embedded Linux, IoT telemetry, edge AI (TFLite) and continuous integration. Background in signal processing and 3D vision from an MSc in Electronics, Signal, Audio and Video.',
+  experiences: [
+    {
+      id: 'aiotrust',
+      role: 'Embedded Systems Engineer',
+      company: 'AIoTrust',
+      context: 'Industrial cybersecurity (OT), edge AI',
+      period: 'Oct 2025 – Present',
+      summary:
+        'Real-time C++ firmware on ARM Cortex-M and edge AI: firmware architecture, MQTT telemetry, anomaly-detection autoencoder exported to TFLite.',
+      details: [
+        'Own the firmware architecture: module boundaries, separation of concerns, interface contracts, decisions recorded as ADRs.',
+        'Built real-time acquisition on ARM Cortex-M microcontrollers, inter-board communication and telemetry; contributed to firmware hardening and integrity.',
+        'Designed an unsupervised autoencoder for time-series anomaly detection (reconstruction error and threshold); trained it and exported it to TFLite.',
+        'Ran exploratory ports to STM32 and i.MX8, measuring CPU and RAM to compare platforms.',
+        'Implemented on-device preprocessing (rolling statistics, transition detection) and flash-persisted configuration (binary, CRC, fallback).',
+        'Integrated ThingsBoard over MQTT: shared attributes, configuration sync, connection-state handling.',
+        'Set up GitLab CI (test environments, releases) and GTest suites; use agentic tools (Claude Code) daily.',
+      ],
+      technologies: [
+        'C++',
+        'ARM Cortex-M',
+        'TFLite',
+        'MQTT',
+        'GitLab CI',
+        'GTest',
+        'Python',
+        'TensorFlow',
+        'Keras',
+        'STM32',
+        'i.MX8',
+        'ThingsBoard',
+        'Arduino',
+        'Git',
+      ],
+      keyTechnologies: ['C++', 'ARM Cortex-M', 'TFLite', 'MQTT', 'GitLab CI'],
+    },
+    {
+      id: 'augmenta',
+      role: 'C++ and JavaScript Developer',
+      company: 'Augmenta',
+      context: 'Real-time point clouds for live performance',
+      period: 'May 2025 – Oct 2025 (6 months)',
+      summary:
+        'Real-time point-cloud processing in C++: adaptive VoxelGrid filter controller and a thread-safe monitoring engine.',
+      details: [
+        'Built a VoxelGrid filter controller that tunes voxel size to hold a target point count whatever the scene density.',
+        'Designed a centralised, thread-safe C++ monitoring engine (JUCE): non-blocking collection, real-time statistics on point and cluster streams.',
+        'Recorded architecture decisions as ADRs.',
+        'Connected web 3D interfaces (Babylon.js) to the engine over OSC and WebSockets.',
+      ],
+      technologies: [
+        'C++',
+        'PCL',
+        'JUCE',
+        'Multithreading',
+        'OSC',
+        'WebSockets',
+        'JavaScript',
+        'Babylon.js',
+        'Vite',
+        'Git',
+      ],
+      keyTechnologies: ['C++', 'PCL', 'JUCE', 'Multithreading', 'OSC'],
+    },
+    {
+      id: 'mylight',
+      role: 'Firmware Developer',
+      company: 'MyLight Systems',
+      context: 'Energy and IoT',
+      period: 'Sep 2022 – May 2025 (2 yrs 9 months)',
+      summary:
+        'C++17 firmware measuring and controlling home energy installations (solar, water heater, EV charger), integrated with Azure IoT.',
+      details: [
+        'Developed C++17 firmware to measure and control solar panels, water heaters and EV chargers.',
+        'Designed technical building blocks and implemented the Listener/Observer pattern.',
+        'Defined the JSON contract with the backend and configured the Azure IoT Device Twin.',
+        'Worked on solar self-consumption optimisation, diagnostic tools and shell scripts on OpenWrt.',
+        'Maintained GTest suites and the integration and validation environment on Azure DevOps.',
+      ],
+      technologies: [
+        'C++',
+        'OpenWrt',
+        'Embedded Linux',
+        'Azure IoT',
+        'GTest',
+        'Bash',
+        'Azure DevOps',
+        'Git',
+      ],
+      keyTechnologies: ['C++', 'OpenWrt', 'Azure IoT', 'GTest', 'Bash'],
+    },
+    {
+      id: 'technodigit',
+      role: 'Software Developer, Point Clouds',
+      company: 'Technodigit (Hexagon)',
+      context: '3D software for engineering and metrology',
+      period: 'Mar 2022 – Jun 2022 (4 months)',
+      summary:
+        'Visualisation, reconstruction and manipulation of LiDAR point clouds in a 3D metrology application (C++17, Qt).',
+      details: [
+        'Implemented reconstruction and manipulation operations on LiDAR point clouds.',
+        'Built 3D visualisation and interaction tools with a Qt user interface.',
+        'Worked in a Scrum team; documented code with Doxygen.',
+      ],
+      technologies: ['C++', 'Qt', 'Point clouds', 'Visual Studio', 'Scrum', 'Doxygen', 'Git'],
+      keyTechnologies: ['C++', 'Qt', 'Point clouds'],
+    },
+    {
+      id: 'laris',
+      role: 'PhD Researcher in Imaging, 3D and Machine Learning',
+      company: 'LARIS, Angers',
+      context: '3D rose plant architectures, dynamic simulation',
+      period: 'Oct 2020 – Aug 2021 (11 months)',
+      summary:
+        'AI segmentation of 3D rose plant models benchmarked against classical methods; growth models and lighting simulation (ray tracing, LiDAR).',
+      details: [
+        'Improved and generalised an AI segmentation method to 3D models.',
+        'Adapted classical segmentation methods to benchmark the approach against the state of the art.',
+        'Built dynamic rose plant models: growth, light environment, 3D modelling.',
+        'Simulated lighting, ray tracing and LiDAR acquisition.',
+      ],
+      technologies: [
+        'Python',
+        'TensorFlow',
+        'Keras',
+        '3D segmentation',
+        'Blender',
+        'Unity',
+        'Ray tracing',
+        'OpenCV',
+        'Structure from Motion',
+        'L-System',
+      ],
+      keyTechnologies: ['Python', 'TensorFlow', '3D segmentation', 'Blender'],
+    },
+  ],
+  projects: [
+    {
+      id: 'ecole-du-loup',
+      name: 'École du Loup(s)',
+      context: 'Online music course with interactive audio tools',
+      period: '2026',
+      url: 'https://ecoleduloup.fr',
+      summary:
+        'Music teaching website designed and built solo: mixing exercises with hand-written biquad filters, frequency response and automatic grading.',
+      details: [
+        'Mixing exercises: hand-written biquad filters, frequency response, gain/noise/clipping model graded automatically and testable outside the browser.',
+        'Unreleased prototype: pitch detection (CREPE), transcription (Basic Pitch) and a generative soloist (ImprovRNN) in TensorFlow.js, isolated in a Web Worker.',
+        'Accounts and progress (Firebase Auth/Firestore) with security rules tested on the emulator.',
+        'Written architecture decisions and an architecture review verified by running the code.',
+      ],
+      technologies: [
+        'TypeScript',
+        'Web Audio',
+        'Signal processing',
+        'TensorFlow',
+        'Web Workers',
+        'Tone.js',
+        'Next.js',
+        'Firebase',
+      ],
+      keyTechnologies: ['TypeScript', 'Web Audio', 'Signal processing', 'Next.js'],
+    },
+    {
+      id: 'lolouplive',
+      name: 'LoloupLive',
+      context: 'Real-time web app for the collective’s jam sessions',
+      period: '2025',
+      url: 'https://dicdaplon.github.io/LoloupLive/',
+      repo: 'https://github.com/Dicdaplon/LoloupLive',
+      summary:
+        'Real-time app used live on stage: lyrics and chord charts, projected chat, photo capture; tested logic and a test-enforced design system.',
+      details: [
+        'Real-time sync with Firebase Realtime Database; server-side image processing with Cloud Functions.',
+        'Logic extracted from components and unit-tested (Vitest), including a chord notation parser.',
+        'Design system driven by stage constraints (dark room, touch targets), documented and enforced by tests.',
+      ],
+      technologies: ['TypeScript', 'React', 'Firebase', 'Vitest', 'Vite'],
+      keyTechnologies: ['TypeScript', 'React', 'Firebase', 'Vitest'],
+    },
+  ],
+  technicalSkills: [
+    {
+      label: 'Languages',
+      value: 'C++17 (RAII, design patterns), C, Python, TypeScript/JavaScript',
+    },
+    {
+      label: 'Embedded and real-time',
+      value:
+        'ARM Cortex-M (SAMD21, STM32), i.MX8, embedded Linux (OpenWrt), MQTT, I2C, serial/USB, flash/CRC, multithreading',
+    },
+    {
+      label: 'Signal, vision and 3D',
+      value:
+        'TensorFlow/Keras, TFLite, 3D segmentation, point clouds (PCL), Structure from Motion, OpenCV, digital filtering, JUCE',
+    },
+    {
+      label: 'IoT and protocols',
+      value: 'Azure IoT, ThingsBoard (device twin), JSON, OSC, WebSockets',
+    },
+    {
+      label: 'Quality and tooling',
+      value: 'GTest, GitLab CI, Azure DevOps, Git, Qt, Doxygen, ADRs, Scrum',
+    },
+    {
+      label: 'AI-assisted development',
+      value: 'Claude Code, agentic workflows with review and tests',
+    },
+  ],
+  softSkills: [
+    {
+      label: 'Music collective',
+      value: 'Founded and run a music collective in Lyon for 3 years: jams, events, coordination.',
+    },
+    {
+      label: 'Teaching',
+      value: 'Maths, physics and music; volunteer tutoring.',
+    },
+    {
+      label: 'Creative work',
+      value:
+        'Sound processing, video editing (Adobe Premiere), event photography, Blender, 3D printing.',
+      printHidden: true,
+    },
+  ],
+  languages: [
+    { name: 'French', level: 'native' },
+    { name: 'English', level: 'fluent, professional; international research environment (LARIS)' },
+  ],
+  education: [
+    {
+      degree: 'MSc in Electrical Engineering',
+      field: 'Electronics, Signal, Audio, Video',
+      school: 'Université Toulouse III Paul Sabatier',
+      period: '2018 – 2020',
+    },
+    {
+      degree: 'BSc in Electrical Engineering',
+      field: 'Electronics',
+      school: 'Université Lyon 1 Claude Bernard',
+      period: '2015 – 2018',
+    },
+  ],
+  ui: {
+    summary: 'Profile',
+    experience: 'Experience',
+    projects: 'Personal projects',
+    technicalSkills: 'Technical skills',
+    softSkills: 'Beyond code',
+    languages: 'Languages',
+    education: 'Education',
+    technologies: 'Technologies',
+    details: 'Details',
+    moreTechnologies: 'Other technologies',
+    expandAll: 'Expand all',
+    collapseAll: 'Collapse all',
+    print: 'Print / PDF',
+    themeToggle: 'Switch theme',
+    filterHint: 'Pick a technology to see where it was used.',
+    filterResult: '{count} item(s) using {tech}',
+    clearFilter: 'Show all',
+    visitSite: 'Visit',
+    sourceCode: 'Source code',
+    onlineVersion: 'Interactive version and details:',
+  },
+};
+
+export default cv;
