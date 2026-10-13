@@ -1,9 +1,10 @@
-/* Print: the fixed A4 version. Token values switch in tokens.css; this file
-   only changes layout and hides screen-only controls. */
+/* Print: the fixed one-page A4 version. Token values switch in tokens.css;
+   this file only changes layout and hides what paper does not need.
+   Printing is deterministic: theme, filter and open details never change it. */
 
 @page {
   size: A4;
-  margin: 14mm 14mm 16mm;
+  margin: 10mm 12mm;
 }
 
 @media print {
@@ -12,29 +13,74 @@
   }
 
   .toolbar,
-  .filter-bar {
+  .filter-bar,
+  .entry__details,
+  [data-link='repo'],
+  [data-print-hidden] {
     display: none !important;
   }
 
   .page {
+    display: block;
     max-width: none;
     padding: 0;
   }
 
+  /* --- Header: identity left, contact right --- */
+
   .cv-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--sp-6);
+    align-items: end;
     margin-bottom: var(--sp-5);
     padding-bottom: var(--sp-3);
     break-inside: avoid;
+    print-color-adjust: exact;
   }
+
+  .cv-header__name,
+  .cv-header__title {
+    grid-column: 1;
+  }
+
+  .cv-header__title {
+    font-size: var(--step-1);
+  }
+
+  .cv-header__contact,
+  .cv-header__notes,
+  .cv-header__online {
+    grid-column: 2;
+    justify-content: flex-end;
+    margin-top: 0;
+    font-size: var(--step--2);
+    text-align: right;
+  }
+
+  .cv-header__name {
+    grid-row: 1;
+  }
+
+  .cv-header__title {
+    grid-row: 2 / span 2;
+  }
+
+  .cv-header__contact {
+    grid-row: 1;
+  }
+
+  .cv-header__online {
+    display: block;
+    color: var(--color-ink-muted);
+  }
+
+  /* --- Columns --- */
 
   .cv-layout {
     grid-template-columns: var(--sidebar) minmax(0, 1fr);
     grid-template-areas: 'aside main';
-    gap: var(--sp-6);
-  }
-
-  .cv-aside {
-    position: static;
+    gap: var(--sp-5);
   }
 
   .cv-section + .cv-section {
@@ -44,9 +90,15 @@
   .cv-section__title {
     margin-bottom: var(--sp-3);
     break-after: avoid;
+    print-color-adjust: exact;
   }
 
-  /* Cards become plain blocks on paper: no fill, no dimming, a single rule. */
+  .summary {
+    font-size: var(--step-0);
+  }
+
+  /* --- Entries: plain ruled blocks, summary and key technologies only --- */
+
   .entry,
   .entry[data-match] {
     padding: 0 0 0 var(--sp-4);
@@ -59,21 +111,48 @@
     break-inside: avoid;
   }
 
+  .entry--project {
+    border-left-style: dashed;
+  }
+
   .entry + .entry {
     margin-top: var(--sp-4);
   }
 
-  .tag,
-  .tag[aria-pressed='true'] {
-    border-color: var(--color-line-strong);
-    background: var(--color-tag-bg);
-    color: var(--color-tag-ink);
-    print-color-adjust: exact;
+  .entry__title {
+    font-size: var(--step-0);
   }
 
-  .cv-header,
-  .cv-section__title {
-    print-color-adjust: exact;
+  .entry__context {
+    font-size: var(--step--2);
+  }
+
+  .entry__summary {
+    margin-top: var(--sp-1);
+  }
+
+  .entry__tags {
+    gap: 0;
+    margin-top: var(--sp-1);
+  }
+
+  .entry__links {
+    margin-top: 0;
+    font-size: var(--step--2);
+  }
+
+  /* Chips become a plain " · " separated list that reads on any printer. */
+  .tag,
+  .tag[aria-pressed='true'] {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-ink-muted);
+  }
+
+  .tag + .tag::before {
+    content: '·';
+    margin-inline: var(--sp-2);
   }
 
   a {

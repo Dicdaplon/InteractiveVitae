@@ -1,5 +1,12 @@
 import type { Person } from '../data/types';
 import { el } from './dom';
+import { bareUrl } from './url';
+
+/** Link to the interactive version, shown on paper only. */
+export interface OnlineVersion {
+  label: string;
+  url: string;
+}
 
 function contactItems(person: Person): HTMLElement[] {
   const items = [
@@ -16,7 +23,7 @@ function contactItems(person: Person): HTMLElement[] {
   return items;
 }
 
-export function renderHeader(person: Person): HTMLElement {
+export function renderHeader(person: Person, online: OnlineVersion): HTMLElement {
   return el(
     'header',
     { class: 'cv-header' },
@@ -24,6 +31,12 @@ export function renderHeader(person: Person): HTMLElement {
     el('p', { class: 'cv-header__title' }, person.title),
     el('ul', { class: 'cv-header__contact' }, ...contactItems(person)),
     person.notes.length > 0 &&
-      el('ul', { class: 'cv-header__notes' }, ...person.notes.map((note) => el('li', {}, note)))
+      el('ul', { class: 'cv-header__notes' }, ...person.notes.map((note) => el('li', {}, note))),
+    el(
+      'p',
+      { class: 'cv-header__online' },
+      `${online.label} `,
+      el('a', { href: online.url }, bareUrl(online.url))
+    )
   );
 }

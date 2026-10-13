@@ -81,6 +81,11 @@
   color: var(--color-ink-muted);
 }
 
+/* Paper only: points readers of the PDF to the interactive version. */
+.cv-header__online {
+  display: none;
+}
+
 /* --- Sections --- */
 
 .cv-section + .cv-section {

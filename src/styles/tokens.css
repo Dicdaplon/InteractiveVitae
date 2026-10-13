@@ -255,7 +255,7 @@
 
     --container: 100%;
     --gutter: 0; /* @page margins handle the edges */
-    --sidebar: 54mm; /* left column on a 182mm text block (A4 minus 14mm margins) */
+    --sidebar: 50mm; /* left column on a 186mm text block (A4 minus 12mm margins) */
 
     --dur-1: 0ms;
     --dur-2: 0ms;

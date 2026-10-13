@@ -1,11 +1,7 @@
 import type { Project, UiLabels } from '../data/types';
 import { el } from './dom';
 import { renderEntry } from './entry';
-
-/** "https://example.org/path/" -> "example.org/path", readable on screen and paper. */
-export function bareUrl(url: string): string {
-  return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-}
+import { bareUrl } from './url';
 
 function renderLinks(project: Project, ui: UiLabels): HTMLElement {
   return el(

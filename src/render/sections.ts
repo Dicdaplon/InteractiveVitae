@@ -15,10 +15,13 @@ export function renderLabelledList(items: LabelledItem[]): HTMLElement {
   return el(
     'dl',
     { class: 'labelled-list' },
-    ...items.flatMap((item) => [
-      el('dt', { class: 'labelled-list__label' }, item.label),
-      el('dd', { class: 'labelled-list__value' }, item.value),
-    ])
+    ...items.flatMap((item) => {
+      const printHidden = item.printHidden ? '' : undefined;
+      return [
+        el('dt', { class: 'labelled-list__label', 'data-print-hidden': printHidden }, item.label),
+        el('dd', { class: 'labelled-list__value', 'data-print-hidden': printHidden }, item.value),
+      ];
+    })
   );
 }
 

@@ -55,7 +55,7 @@ export function renderCv(cv: Cv): HTMLElement {
     'div',
     { class: 'page' },
     renderToolbar(ui),
-    renderHeader(cv.person),
+    renderHeader(cv.person, { label: ui.onlineVersion, url: cv.url }),
     el(
       'div',
       { class: 'cv-layout' },
@@ -73,8 +73,7 @@ export function renderCv(cv: Cv): HTMLElement {
           'projects',
           ui.projects,
           ...cv.projects.map((project) => renderProject(project, ui))
-        ),
-        renderSection('soft-skills', ui.softSkills, renderLabelledList(cv.softSkills))
+        )
       ),
       el(
         'aside',
@@ -85,7 +84,8 @@ export function renderCv(cv: Cv): HTMLElement {
           renderLabelledList(cv.technicalSkills)
         ),
         renderSection('languages', ui.languages, renderLanguages(cv.languages)),
-        renderSection('education', ui.education, renderEducation(cv.education))
+        renderSection('education', ui.education, renderEducation(cv.education)),
+        renderSection('soft-skills', ui.softSkills, renderLabelledList(cv.softSkills))
       )
     )
   );

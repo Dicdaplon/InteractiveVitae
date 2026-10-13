@@ -123,12 +123,6 @@ a {
     grid-template-areas: 'aside main';
     gap: var(--sp-7);
   }
-
-  .cv-aside {
-    align-self: start;
-    position: sticky;
-    top: var(--sp-5);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

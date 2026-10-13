@@ -3,7 +3,7 @@ import { cvFr } from '../data/cv.fr';
 import { renderCv } from './cv';
 import { el } from './dom';
 import { renderEntry } from './entry';
-import { bareUrl } from './project';
+import { bareUrl } from './url';
 
 describe('el', () => {
   it('treats strings as text, never as markup', () => {
@@ -75,6 +75,16 @@ describe('renderCv', () => {
   it('gives each details toggle a distinct accessible name', () => {
     const names = [...page.querySelectorAll('summary')].map((node) => node.textContent);
     expect(new Set(names).size).toBe(names.length);
+  });
+
+  it('points printed copies to the interactive version', () => {
+    const link = page.querySelector<HTMLAnchorElement>('.cv-header__online a')!;
+    expect(link.getAttribute('href')).toBe(cvFr.url);
+  });
+
+  it('marks print-hidden list items on both term and description', () => {
+    const hidden = cvFr.softSkills.filter((item) => item.printHidden).length;
+    expect(page.querySelectorAll('#soft-skills [data-print-hidden]')).toHaveLength(hidden * 2);
   });
 
   it('labels every section with its heading', () => {
