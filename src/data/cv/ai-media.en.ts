@@ -9,7 +9,7 @@ const cv: Cv = {
   lang: 'en',
   person: {
     name: 'Chafik Lekouara',
-    title: 'C++ Engineer — ML, Audio DSP & 3D Vision',
+    title: 'C++ Software Engineer — ML, Audio DSP & 3D Vision',
     location: 'Lyon, France',
     email: 'chafik.lekouara@gmail.com',
     links: [
@@ -25,7 +25,7 @@ const cv: Cv = {
     notes: ['Open to fully remote roles (CET)'],
   },
   summary:
-    'Software engineer (C++, Python) with 5+ years across machine learning, signal processing and 3D: on-device anomaly detection (compact GRU autoencoder, TFLite, STM32/i.MX8), a real-time audio analysis SDK, LiDAR point clouds and AI-based 3D segmentation. MSc in Electronics, Signal, Audio & Video.',
+    'Software engineer (C++, Python) since 2020, working across machine learning, signal processing and 3D: an on-device anomaly-detection POC (compact GRU autoencoder, TFLite, STM32/i.MX8), an open-source real-time audio analysis SDK, LiDAR point clouds and AI-based 3D segmentation. MSc in Electronics, Signal, Audio, Video.',
   experiences: [
     {
       id: 'aiotrust',
@@ -34,13 +34,13 @@ const cv: Cv = {
       context: 'Industrial cybersecurity (OT)',
       period: 'Oct 2025 – Present',
       summary:
-        'On-device ML: compact GRU autoencoder for time-series anomaly detection, trained in Keras, exported to TFLite, evaluated on STM32/i.MX8 (working POC).',
+        'On-device ML: compact GRU autoencoder for time-series anomaly detection, trained in Keras and exported to TFLite (working POC).',
       details: [
         'Own the C++ firmware architecture (modules, interface contracts), decisions in ADRs.',
-        'Sensor pipeline: real-time acquisition on Cortex-M, on-device preprocessing, MQTT telemetry.',
-        'Designed a compact unsupervised GRU autoencoder (Keras/TensorFlow) sized for embedded targets, flagging anomalies by reconstruction error and threshold; trained it, exported it to TFLite and delivered a working proof of concept.',
-        'Ran exploratory ports to STM32 and i.MX8, measuring CPU and RAM to assess on-device feasibility.',
-        'GTest and GitLab CI; daily agentic development (Claude Code) with review and tests.',
+        'Port and benchmark the model on STM32 and i.MX8 (CPU, RAM) for on-device inference.',
+        'Build the sensor pipeline: real-time acquisition on Cortex-M, on-device preprocessing, MQTT telemetry.',
+        'Designed the unsupervised GRU autoencoder (Keras/TensorFlow), sized for embedded targets: anomalies flagged by reconstruction error and threshold.',
+        'GitLab CI and GTest; daily agentic development (Claude Code) with review and tests.',
       ],
       technologies: [
         'TensorFlow',
@@ -69,11 +69,11 @@ const cv: Cv = {
       context: 'Real-time point clouds for live performance',
       period: 'May 2025 – Oct 2025 (6 months)',
       summary:
-        'Adaptive point-cloud filtering (PCL, VoxelGrid) that holds a target point count at any scene density, plus a thread-safe C++ monitoring engine.',
+        'Adaptive point-cloud filtering (PCL, VoxelGrid) that holds a target point count at any scene density.',
       details: [
+        'Thread-safe C++ monitoring engine (JUCE): non-blocking collection, real-time stats on point and cluster streams.',
         'Babylon.js 3D web interfaces over OSC/WebSockets; architecture decisions in ADRs.',
         'Built a VoxelGrid filter controller that tunes voxel size to hold a target point count whatever the scene density.',
-        'Designed a centralised, thread-safe C++ monitoring engine (JUCE): non-blocking collection, real-time statistics on point and cluster streams.',
       ],
       technologies: [
         'C++',
@@ -91,13 +91,12 @@ const cv: Cv = {
     },
     {
       id: 'mylight',
-      print: { highlights: 1 },
       role: 'Firmware Developer',
       company: 'MyLight Systems',
       context: 'Energy and IoT',
       period: 'Sep 2022 – May 2025 (2 yrs 9 months)',
       summary:
-        'C++17 firmware measuring and controlling energy installations on embedded Linux, integrated with Azure IoT.',
+        'C++17 firmware measuring and controlling electrical installations on embedded Linux, integrated with Azure IoT.',
       details: ['Observer pattern, JSON backend contract, Azure IoT Device Twin, GTest suites.'],
       technologies: [
         'C++',
@@ -160,7 +159,7 @@ const cv: Cv = {
     {
       id: 'audiolab',
       name: 'AudioLab',
-      context: 'Real-time audio analysis SDK for the browser',
+      context: 'Open-source real-time key, chord and tempo detection',
       period: '2026',
       url: 'https://dicdaplon.github.io/AudioLab/',
       repo: 'https://github.com/Dicdaplon/AudioLab',
@@ -169,7 +168,7 @@ const cv: Cv = {
       details: [
         'Key detection by Krumhansl–Schmuckler correlation over 24 keys on sliding windows; chord detection by cosine similarity against 24 triad templates.',
         'Tempo estimation from an onset-strength envelope and a beat spectrum (40–240 BPM), with gapless capture on the audio thread (AudioWorklet).',
-        'Results pinned by the test suites: 24/24 synthetic chords and keys, 12/15 real recordings top-1 for key, tempo within 3 BPM on click tracks.',
+        'Results pinned by the test suites: 24/24 synthetic chords and keys, top-1 key accuracy on 12/15 real recordings, tempo within 3 BPM on click tracks.',
         'Two microphone-driven ear-training games; framework-free TypeScript core plus a React package, with CI and GitHub Pages deployment.',
       ],
       technologies: [
@@ -185,7 +184,7 @@ const cv: Cv = {
     },
     {
       id: 'ecole-du-loup',
-      name: 'École du Loup(s)',
+      name: 'l’école du loup(é)',
       context: 'Online music course with interactive audio tools',
       period: '2026',
       url: 'https://ecoleduloup.fr',
@@ -217,7 +216,7 @@ const cv: Cv = {
       url: 'https://dicdaplon.github.io/LoloupLive/#/info',
       repo: 'https://github.com/Dicdaplon/LoloupLive',
       summary:
-        'Real-time app used live on stage: lyrics and chord charts, projected chat, photo capture; tested logic and a test-enforced design system.',
+        'Real-time app used during live jam sessions: lyrics and chord charts, projected chat, photo capture; tested logic and a test-enforced design system.',
       details: [
         'Real-time sync with Firebase Realtime Database; server-side image processing with Cloud Functions.',
         'Logic extracted from components and unit-tested (Vitest), including a chord notation parser.',
@@ -259,7 +258,7 @@ const cv: Cv = {
     {
       label: 'Music',
       value:
-        'Founded and run a music collective in Lyon for 4 years (jams, events); build its tools.',
+        'Founded and run a music collective in Lyon for 4 years (jams, events) and build its software tools.',
     },
     {
       label: 'Audiovisual work',

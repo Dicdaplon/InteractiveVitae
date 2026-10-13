@@ -9,7 +9,7 @@ const cv: Cv = {
   lang: 'fr',
   person: {
     name: 'Chafik Lekouara',
-    title: 'Ingénieur logiciel C++ — ML, audio et vision 3D',
+    title: 'Ingénieur logiciel C++ — ML, audio/DSP et vision 3D',
     location: 'Lyon, France',
     email: 'chafik.lekouara@gmail.com',
     links: [
@@ -22,10 +22,10 @@ const cv: Cv = {
         href: 'https://www.linkedin.com/in/chafiklekouara',
       },
     ],
-    notes: ['Ouvert aux postes en télétravail complet'],
+    notes: ['Ouvert aux postes en télétravail complet (fuseau CET)'],
   },
   summary:
-    'Ingénieur logiciel (C++, Python) depuis 2020, entre machine learning, signal et 3D : détection d’anomalies sur l’appareil (autoencodeur GRU compact, TFLite, STM32/i.MX8), SDK d’analyse audio temps réel, nuages de points LiDAR, segmentation 3D par IA. Master Électronique, Signal, Audio, Vidéo.',
+    'Ingénieur logiciel (C++, Python) depuis 2020, entre machine learning, signal et 3D : POC de détection d’anomalies sur l’appareil (autoencodeur GRU compact, TFLite, STM32/i.MX8), SDK open source d’analyse audio temps réel, nuages de points LiDAR, segmentation 3D par IA. Master Électronique, Signal, Audio, Vidéo.',
   experiences: [
     {
       id: 'aiotrust',
@@ -34,13 +34,13 @@ const cv: Cv = {
       context: 'Cybersécurité industrielle (OT)',
       period: '10/2025 – présent',
       summary:
-        'ML embarqué : autoencodeur GRU compact de détection d’anomalies, entraîné en Keras, exporté en TFLite, évalué sur STM32/i.MX8 (POC fonctionnel).',
+        'ML embarqué : autoencodeur GRU compact de détection d’anomalies sur séries temporelles, entraîné en Keras et exporté en TFLite (POC fonctionnel).',
       details: [
-        'Responsable de l’architecture firmware C++ (modules, contrats d’interface), ADR.',
-        'Chaîne capteurs : acquisition temps réel Cortex-M, prétraitement embarqué, MQTT.',
-        'Autoencodeur GRU non supervisé de petite taille (Keras/TensorFlow), conçu pour l’embarqué : anomalies détectées par erreur de reconstruction et seuil ; entraînement, export TFLite, POC fonctionnel.',
-        'Portage exploratoire sur STM32 et i.MX8 : mesures CPU/RAM, comparatif de faisabilité embarquée.',
-        'GTest et GitLab CI ; développement agentique quotidien (Claude Code) avec revue et tests.',
+        'Responsable de l’architecture firmware C++ (modules, contrats d’interface), décisions en ADR.',
+        'Portage et mesures du modèle sur STM32 et i.MX8 (CPU, RAM) pour l’inférence embarquée.',
+        'Chaîne capteurs : acquisition temps réel Cortex-M, prétraitement embarqué, télémétrie MQTT.',
+        'Conception de l’autoencodeur GRU non supervisé (Keras/TensorFlow), dimensionné pour l’embarqué : anomalies détectées par erreur de reconstruction et seuil.',
+        'GitLab CI et GTest ; développement agentique quotidien (Claude Code) avec revue et tests.',
       ],
       technologies: [
         'TensorFlow',
@@ -69,11 +69,11 @@ const cv: Cv = {
       context: 'Nuages de points temps réel pour le spectacle vivant',
       period: '05/2025 – 10/2025 (6 mois)',
       summary:
-        'Filtrage adaptatif de nuages de points (PCL, VoxelGrid) qui tient un nombre de points cible quelle que soit la scène, et monitoring C++ thread-safe.',
+        'Filtrage adaptatif de nuages de points (PCL, VoxelGrid) qui tient un nombre de points cible quelle que soit la densité de la scène.',
       details: [
+        'Moteur de monitoring C++ thread-safe (JUCE) : collecte non bloquante, statistiques temps réel des flux.',
         'Interfaces 3D web Babylon.js via OSC/WebSockets ; choix d’architecture en ADR.',
-        'Régulateur de filtrage VoxelGrid : ajuste automatiquement la taille de voxel pour tenir un nombre de points cible, quelle que soit la densité de la scène.',
-        'Moteur de monitoring C++ centralisé et thread-safe (JUCE) : collecte non bloquante, statistiques temps réel sur les flux de points et de clusters.',
+        'Régulateur de filtrage VoxelGrid : ajuste la taille de voxel pour tenir un nombre de points cible, quelle que soit la densité de la scène.',
       ],
       technologies: [
         'C++',
@@ -91,7 +91,6 @@ const cv: Cv = {
     },
     {
       id: 'mylight',
-      print: { highlights: 1 },
       role: 'Développeur firmware',
       company: 'MyLight Systems',
       context: 'Énergie et IoT',
@@ -139,7 +138,7 @@ const cv: Cv = {
         'Amélioration et généralisation d’une segmentation par IA à des modèles 3D.',
         'Adaptation de méthodes de segmentation classiques pour comparer la méthode à l’état de l’art.',
         'Modèles de rosiers dynamiques : croissance, environnement lumineux, modélisation 3D.',
-        'Simulation d’éclairage, ray tracing et LiDAR.',
+        'Simulation d’éclairage, ray tracing et acquisition LiDAR.',
       ],
       technologies: [
         'Python',
@@ -160,7 +159,7 @@ const cv: Cv = {
     {
       id: 'audiolab',
       name: 'AudioLab',
-      context: 'SDK d’analyse audio temps réel dans le navigateur',
+      context: 'Détection open source de tonalité, d’accords et de tempo',
       period: '2026',
       url: 'https://dicdaplon.github.io/AudioLab/',
       repo: 'https://github.com/Dicdaplon/AudioLab',
@@ -168,8 +167,8 @@ const cv: Cv = {
         'SDK open source d’analyse audio temps réel : détection de tonalité, d’accords et de tempo au micro, DSP écrit à la main et testé.',
       details: [
         'Tonalité par corrélation de Krumhansl–Schmuckler sur 24 tonalités et fenêtres glissantes ; accords par similarité cosinus avec 24 gabarits de triades.',
-        'Tempo par enveloppe d’onsets et spectre de battement (40–240 BPM), capture sans trou sur le thread audio (AudioWorklet).',
-        'Résultats fixés par les tests : 24/24 accords et tonalités synthétiques, 12/15 enregistrements réels en top-1 pour la tonalité, tempo à ±3 BPM.',
+        'Tempo par enveloppe d’onsets et spectre de battement (40–240 BPM), capture continue, sans perte sur le thread audio (AudioWorklet).',
+        'Résultats fixés par les tests : 24/24 accords et tonalités synthétiques, 12/15 enregistrements réels en top-1 pour la tonalité, tempo à ±3 BPM sur pistes métronome.',
         'Deux jeux d’entraînement de l’oreille au micro ; cœur TypeScript sans framework et paquet React, CI et déploiement GitHub Pages.',
       ],
       technologies: [
@@ -185,7 +184,7 @@ const cv: Cv = {
     },
     {
       id: 'ecole-du-loup',
-      name: 'École du Loup(s)',
+      name: 'l’école du loup(é)',
       context: 'Cours de musique en ligne avec outils audio interactifs',
       period: '2026',
       url: 'https://ecoleduloup.fr',
@@ -279,7 +278,7 @@ const cv: Cv = {
     },
     {
       name: 'Anglais',
-      level: 'courant, équipe de recherche internationale',
+      level: 'courant, professionnel ; travail en équipe de recherche internationale',
     },
   ],
   education: [
