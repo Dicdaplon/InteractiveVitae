@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import cvFr from '../data/cv/ai-media.fr';
+import { fixture as cvFr } from '../test/fixture';
 import { renderCv } from '../render/cv';
 import { openFromHash, setupDisclosure } from './disclosure';
 
@@ -46,8 +46,8 @@ describe('openFromHash', () => {
   });
 
   it('opens the targeted entry', () => {
-    const entry = openFromHash(document, '#project-lolouplive');
-    expect(entry?.id).toBe('project-lolouplive');
+    const entry = openFromHash(document, '#project-gamma');
+    expect(entry?.id).toBe('project-gamma');
     expect(entry?.querySelector('details')?.open).toBe(true);
   });
 

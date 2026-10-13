@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import cvFr from '../data/cv/ai-media.fr';
+import { fixture as cvFr } from '../test/fixture';
 import { renderCv } from './cv';
 import { el } from './dom';
 import { renderEntry } from './entry';
@@ -86,6 +86,18 @@ describe('renderCv', () => {
   it('marks print-hidden list items on both term and description', () => {
     const hidden = cvFr.beyondCode.filter((item) => item.printHidden).length;
     expect(page.querySelectorAll('#beyond-code [data-print-hidden]')).toHaveLength(hidden * 2);
+  });
+
+  it('maps the print option to print-only markup', () => {
+    expect(page.querySelectorAll('#experience-alpha .entry__print-highlights li')).toHaveLength(1);
+    expect(page.querySelector('#experience-beta')?.hasAttribute('data-print-compact')).toBe(true);
+    expect(page.querySelector('#experience-beta .entry__print-highlights')).toBeNull();
+  });
+
+  it('links to the other language, labelled in that language', () => {
+    const link = page.querySelector<HTMLAnchorElement>('.toolbar a')!;
+    expect(link.getAttribute('href')).toBe(cvFr.alternate?.href);
+    expect(link.lang).toBe(cvFr.alternate?.lang);
   });
 
   it('labels every section with its heading', () => {

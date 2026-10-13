@@ -14,7 +14,7 @@ export function renderSection(id: string, title: string, ...content: Child[]): H
 export function renderLabelledList(items: LabelledItem[]): HTMLElement {
   return el(
     'dl',
-    { class: 'labelled-list' },
+    {},
     ...items.flatMap((item) => {
       const printHidden = item.printHidden ? '' : undefined;
       return [

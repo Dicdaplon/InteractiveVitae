@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import cvFr from '../data/cv/ai-media.fr';
 import { renderCv } from '../render/cv';
+import { fixture } from '../test/fixture';
 import { formatResult, matchesTechnology, setupTechFilter } from './techFilter';
 
-const labels = { hint: 'hint', result: '{count} avec {tech}' };
+const labels = { hint: 'hint', result: '{count} with {tech}' };
 
 describe('matchesTechnology', () => {
   it('matches exact names only', () => {
@@ -14,66 +14,60 @@ describe('matchesTechnology', () => {
 
 describe('formatResult', () => {
   it('fills both placeholders', () => {
-    expect(formatResult('{count} avec {tech}', 3, 'Git')).toBe('3 avec Git');
+    expect(formatResult('{count} with {tech}', 3, 'Git')).toBe('3 with Git');
   });
 });
 
 describe('setupTechFilter', () => {
-  let section: HTMLElement;
+  let main: HTMLElement;
 
-  const card = (id: string) => section.querySelector<HTMLElement>(`#experience-${id}`)!;
+  const entry = (id: string) => main.querySelector<HTMLElement>(`#${id}`)!;
   const chip = (id: string, tech: string) =>
-    card(id).querySelector<HTMLElement>(`[data-tech="${tech}"]`)!;
-  const status = () => section.querySelector('[data-filter-status]')!.textContent;
-  const clear = () => section.querySelector<HTMLElement>('[data-action="clear-filter"]')!;
+    entry(id).querySelector<HTMLElement>(`[data-tech="${tech}"]`)!;
+  const status = () => main.querySelector('[data-filter-status]')!.textContent;
+  const clear = () => main.querySelector<HTMLElement>('[data-action="clear-filter"]')!;
 
   beforeEach(() => {
-    section = renderCv(cvFr).querySelector<HTMLElement>('.cv-main')!;
-    setupTechFilter(section, labels);
+    main = renderCv(fixture).querySelector<HTMLElement>('.cv-main')!;
+    setupTechFilter(main, labels);
   });
 
-  it('highlights matching experiences and dims the others', () => {
-    chip('augmenta', 'PCL').click();
-    expect(card('augmenta').dataset.match).toBe('true');
-    expect(card('aiotrust').dataset.match).toBe('false');
-    expect(status()).toBe('1 avec PCL');
+  it('highlights matching entries and dims the others', () => {
+    chip('experience-alpha', 'PCL').click();
+    expect(entry('experience-alpha').dataset.match).toBe('true');
+    expect(entry('experience-beta').dataset.match).toBe('false');
+    expect(status()).toBe('1 with PCL');
     expect(clear().hidden).toBe(false);
   });
 
   it('presses every chip of the selected technology', () => {
-    chip('aiotrust', 'Git').click();
-    expect(chip('augmenta', 'Git').getAttribute('aria-pressed')).toBe('true');
-    expect(chip('augmenta', 'PCL').getAttribute('aria-pressed')).toBe('false');
+    chip('project-gamma', 'TypeScript').click();
+    expect(chip('project-delta', 'TypeScript').getAttribute('aria-pressed')).toBe('true');
+    expect(chip('experience-alpha', 'C++').getAttribute('aria-pressed')).toBe('false');
   });
 
-  it('resets when the active chip is clicked again', () => {
-    chip('augmenta', 'PCL').click();
-    chip('augmenta', 'PCL').click();
-    expect(card('aiotrust').hasAttribute('data-match')).toBe(false);
-    expect(status()).toBe('hint');
-    expect(clear().hidden).toBe(true);
-  });
-
-  it('includes projects and technologies hidden in collapsed details', () => {
-    chip('aiotrust', 'Git').click();
-    expect(card('mylight').dataset.match).toBe('true');
-    expect(section.querySelector('#project-lolouplive')?.getAttribute('data-match')).toBe('false');
-
-    section.querySelector<HTMLElement>('#project-lolouplive [data-tech="TypeScript"]')!.click();
-    expect(section.querySelector('#project-ecole-du-loup')?.getAttribute('data-match')).toBe(
-      'true'
-    );
-    expect(card('aiotrust').dataset.match).toBe('false');
+  it('matches technologies hidden in collapsed details, across experiences and projects', () => {
+    chip('experience-alpha', 'Git').click();
+    expect(entry('experience-beta').dataset.match).toBe('true');
+    expect(entry('project-gamma').dataset.match).toBe('true');
+    expect(entry('project-delta').dataset.match).toBe('false');
+    expect(status()).toBe('3 with Git');
   });
 
   it('does not open any details', () => {
-    chip('aiotrust', 'Git').click();
-    expect(section.querySelectorAll('details[open]')).toHaveLength(0);
+    chip('experience-alpha', 'Git').click();
+    expect(main.querySelectorAll('details[open]')).toHaveLength(0);
   });
 
-  it('resets from the clear button', () => {
-    chip('augmenta', 'PCL').click();
+  it('resets when the active chip is clicked again or from the clear button', () => {
+    chip('experience-alpha', 'PCL').click();
+    chip('experience-alpha', 'PCL').click();
+    expect(entry('experience-beta').hasAttribute('data-match')).toBe(false);
+    expect(status()).toBe('hint');
+    expect(clear().hidden).toBe(true);
+
+    chip('experience-alpha', 'PCL').click();
     clear().click();
-    expect(card('augmenta').hasAttribute('data-match')).toBe(false);
+    expect(entry('experience-alpha').hasAttribute('data-match')).toBe(false);
   });
 });

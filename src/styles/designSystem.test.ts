@@ -52,7 +52,7 @@ describe('design system guardrails', () => {
     const emitted = new Set(
       [...page.querySelectorAll('[class]')].flatMap((node) => [...node.classList])
     );
-    const missing = [...emitted].filter((name) => !allCss.includes(`.${name}`));
+    const missing = [...emitted].filter((name) => !new RegExp(`\\.${name}(?![\\w-])`).test(allCss));
     expect(missing).toEqual([]);
   });
 });
