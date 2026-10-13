@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import cvFr from '../data/cv/basic.fr';
+import cvFr from '../data/cv/ai-media.fr';
 import { renderCv } from './cv';
 import { el } from './dom';
 import { renderEntry } from './entry';

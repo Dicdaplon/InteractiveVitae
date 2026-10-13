@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run type-check && vite build",
+    "build": "npm run type-check && vite build --mode ai-media-fr && vite build --mode ai-media-en",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "test": "vitest run",

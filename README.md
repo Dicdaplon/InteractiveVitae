@@ -32,17 +32,22 @@ scale 100%) and "Save as PDF". `npm run check:print` needs Chromium once:
 Each CV variant exists in French and English and is chosen at build time
 with a Vite mode `<variant>-<lang>`, so a build contains exactly one of them.
 
+| Variant    | Focus                          | Published                                   |
+| ---------- | ------------------------------ | ------------------------------------------- |
+| `ai-media` | Machine learning, audio, image | Yes: French at the root, English in `/en/`  |
+| `basic`    | Embedded C/C++                 | No: committed, built locally on demand only |
+
 ```sh
 npm run dev -- --mode basic-en              # browse a variant locally
-npm run check:print -- ai-media-fr basic-fr # check them and write dist-print/<mode>.pdf
+npm run check:print -- basic-fr ai-media-en # check them and write dist-print/<mode>.pdf
 ```
 
-- `basic` lives in `src/data/cv/` and is the only variant deployed
-  (`basic-fr`, the default mode).
-- Other variants live in `src/data/cv/private/`, which git ignores: they
-  never reach the public repository or GitHub Pages. Back them up
-  separately.
-- A variant may spread the basic data and override only what changes.
+- `npm run build` builds the public variant in both languages; the toolbar
+  links each language to the other.
+- The public variant files are standalone: importing another variant would
+  ship its text in the deployed bundle, and a test forbids it.
+- `src/data/cv/private/` is git-ignored, for drafts that must not reach the
+  repository at all.
 
 ## Architecture
 

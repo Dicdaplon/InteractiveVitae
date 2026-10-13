@@ -1,7 +1,7 @@
 // Checks that the printed CV fits on exactly one A4 page, with some headroom,
 // and writes the PDF of each checked variant to dist-print/<mode>.pdf.
 // Usage: npm run check:print [-- <mode>...]   e.g. -- basic-fr ai-media-en
-// Without arguments, the public version (basic-fr) is checked.
+// Without arguments, the public variant is checked in both languages.
 import { mkdir, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { build, preview } from 'vite';
@@ -32,7 +32,7 @@ function countPages(pdf) {
 }
 
 const modes = process.argv.slice(2);
-if (modes.length === 0) modes.push('basic-fr');
+if (modes.length === 0) modes.push('ai-media-fr', 'ai-media-en');
 
 const browser = await chromium.launch();
 const failures = [];

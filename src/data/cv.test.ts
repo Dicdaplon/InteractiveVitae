@@ -1,7 +1,8 @@
-import { readdirSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import type { Cv, Entry } from './types';
+import { PUBLIC_VARIANT } from './variants';
 
 // Every variant present on this machine, public and private. Read from disk
 // rather than import.meta.glob, whose result Vitest caches across new files.
@@ -66,13 +67,26 @@ for (const { path, cv } of variants) {
 }
 
 describe('CV variants', () => {
-  it('include the public basic French version', () => {
-    expect(variants.map(({ path }) => path)).toContain('./cv/basic.fr.ts');
+  it('include the public variant in both languages', () => {
+    const paths = variants.map(({ path }) => path);
+    expect(paths).toContain(`./cv/${PUBLIC_VARIANT}.fr.ts`);
+    expect(paths).toContain(`./cv/${PUBLIC_VARIANT}.en.ts`);
   });
 
-  it('only give a public URL to the basic version', () => {
+  it('only give a public URL and a language switch to the public variant', () => {
     for (const { path, cv } of variants) {
-      if (cv.url) expect(path, path).toMatch(/^\.\/cv\/basic\./);
+      const isPublic = path.startsWith(`./cv/${PUBLIC_VARIANT}.`);
+      expect(Boolean(cv.url), path).toBe(isPublic);
+      expect(Boolean(cv.alternate), path).toBe(isPublic);
+    }
+  });
+});
+
+describe('public variant isolation', () => {
+  it('never imports another variant, so the deployed bundle carries no other CV', () => {
+    for (const lang of ['fr', 'en']) {
+      const source = readFileSync(join(cvDir, `${PUBLIC_VARIANT}.${lang}.ts`), 'utf8');
+      expect(source, lang).not.toMatch(/from '\.\/(?!\.\.)/);
     }
   });
 });

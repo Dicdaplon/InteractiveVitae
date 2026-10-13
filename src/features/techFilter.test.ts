@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import cvFr from '../data/cv/basic.fr';
+import cvFr from '../data/cv/ai-media.fr';
 import { renderCv } from '../render/cv';
 import { formatResult, matchesTechnology, setupTechFilter } from './techFilter';
 

@@ -2,7 +2,6 @@ import type { Cv } from '../types';
 
 const cv: Cv = {
   lang: 'fr',
-  url: 'https://dicdaplon.github.io/InteractiveVitae/',
   person: {
     name: 'Chafik Lekouara',
     title: 'Ingénieur logiciel embarqué C/C++ — temps réel, signal et 3D',
