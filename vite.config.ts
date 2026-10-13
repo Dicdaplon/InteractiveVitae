@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { defineConfig, type Plugin } from 'vite';
+import type { Cv } from './src/data/types';
 import { parseMode } from './src/data/variants';
 
 const REPO_BASE = '/InteractiveVitae/';
@@ -17,12 +18,32 @@ function cvModule(mode: string): string {
   throw new Error(`No CV data for mode "${mode}" (looked for ${file})`);
 }
 
+function escapeHtml(text: string): string {
+  return text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+}
+
+/** Fills the page language, title and description from the built CV, for search and link previews. */
+function cvMetadata(file: string): Plugin {
+  return {
+    name: 'cv-metadata',
+    async transformIndexHtml(html) {
+      const { default: cv } = (await import(pathToFileURL(file).href)) as { default: Cv };
+      return html
+        .replace('%CV_LANG%', cv.lang)
+        .replace('%CV_TITLE%', escapeHtml(`${cv.person.name} — ${cv.person.title}`))
+        .replace('%CV_DESCRIPTION%', escapeHtml(cv.summary));
+    },
+  };
+}
+
 // GitHub Pages serves the site under /<repository>/; English lives in /en/.
 export default defineConfig(({ mode }) => {
   const english = parseMode(mode).lang === 'en';
+  const cvFile = cvModule(mode);
   return {
     base: english ? `${REPO_BASE}en/` : REPO_BASE,
     build: { outDir: english ? 'dist/en' : 'dist' },
-    resolve: { alias: { '@cv': cvModule(mode) } },
+    resolve: { alias: { '@cv': cvFile } },
+    plugins: [cvMetadata(cvFile)],
   };
 });
