@@ -70,6 +70,10 @@
     grid-row: 1;
   }
 
+  .cv-header::after {
+    print-color-adjust: exact;
+  }
+
   .cv-header__online {
     display: block;
     color: var(--color-ink-muted);
