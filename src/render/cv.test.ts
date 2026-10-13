@@ -84,8 +84,8 @@ describe('renderCv', () => {
   });
 
   it('marks print-hidden list items on both term and description', () => {
-    const hidden = cvFr.softSkills.filter((item) => item.printHidden).length;
-    expect(page.querySelectorAll('#soft-skills [data-print-hidden]')).toHaveLength(hidden * 2);
+    const hidden = cvFr.beyondCode.filter((item) => item.printHidden).length;
+    expect(page.querySelectorAll('#beyond-code [data-print-hidden]')).toHaveLength(hidden * 2);
   });
 
   it('labels every section with its heading', () => {

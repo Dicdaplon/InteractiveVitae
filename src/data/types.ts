@@ -1,5 +1,7 @@
 /** Shape of the CV content. Rendering code depends only on these types. */
 
+import type { Lang } from './variants';
+
 export interface ContactLink {
   label: string;
   href: string;
@@ -84,7 +86,7 @@ export interface UiLabels {
   experience: string;
   projects: string;
   technicalSkills: string;
-  softSkills: string;
+  beyondCode: string;
   languages: string;
   education: string;
   technologies: string;
@@ -93,6 +95,8 @@ export interface UiLabels {
   expandAll: string;
   collapseAll: string;
   print: string;
+  /** Accessible name of the toolbar. */
+  actions: string;
   themeToggle: string;
   filterHint: string;
   /** Template with {count} and {tech} placeholders. */
@@ -104,17 +108,17 @@ export interface UiLabels {
 }
 
 export interface Cv {
-  lang: string;
+  lang: Lang;
   /** Public URL of the interactive version, printed in the header. Omit for unpublished variants. */
   url?: string;
   /** The same CV in the other language, shown in the toolbar. */
-  alternate?: ContactLink;
+  alternate?: ContactLink & { lang: Lang };
   person: Person;
   summary: string;
   experiences: Experience[];
   projects: Project[];
   technicalSkills: LabelledItem[];
-  softSkills: LabelledItem[];
+  beyondCode: LabelledItem[];
   languages: Language[];
   education: Education[];
   ui: UiLabels;

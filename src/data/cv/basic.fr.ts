@@ -255,7 +255,7 @@ const cv: Cv = {
       value: 'Claude Code, workflows agentiques avec revue et tests',
     },
   ],
-  softSkills: [
+  beyondCode: [
     {
       label: 'Collectif musical',
       value:
@@ -298,7 +298,7 @@ const cv: Cv = {
     experience: 'Expérience professionnelle',
     projects: 'Réalisations personnelles',
     technicalSkills: 'Compétences techniques',
-    softSkills: 'Au-delà du code',
+    beyondCode: 'Au-delà du code',
     languages: 'Langues',
     education: 'Formation',
     technologies: 'Technologies',
@@ -306,6 +306,7 @@ const cv: Cv = {
     moreTechnologies: 'Autres technologies',
     expandAll: 'Tout déplier',
     collapseAll: 'Tout replier',
+    actions: 'Actions',
     print: 'Imprimer / PDF',
     themeToggle: 'Changer de thème',
     filterHint: 'Choisissez une technologie pour voir où elle a servi.',

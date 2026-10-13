@@ -255,7 +255,7 @@ const cv: Cv = {
       value: 'Git, GitLab CI, ADRs, Claude Code (agentic workflows)',
     },
   ],
-  softSkills: [
+  beyondCode: [
     {
       label: 'Music',
       value:
@@ -299,7 +299,7 @@ const cv: Cv = {
     experience: 'Experience',
     projects: 'Personal projects',
     technicalSkills: 'Technical skills',
-    softSkills: 'Beyond code',
+    beyondCode: 'Beyond code',
     languages: 'Languages',
     education: 'Education',
     technologies: 'Technologies',
@@ -307,6 +307,7 @@ const cv: Cv = {
     moreTechnologies: 'Other technologies',
     expandAll: 'Expand all',
     collapseAll: 'Collapse all',
+    actions: 'Actions',
     print: 'Print / PDF',
     themeToggle: 'Switch theme',
     filterHint: 'Pick a technology to see where it was used.',
@@ -318,6 +319,7 @@ const cv: Cv = {
   },
   url: 'https://dicdaplon.github.io/InteractiveVitae/en/',
   alternate: {
+    lang: 'fr',
     label: 'Français',
     href: '../',
   },

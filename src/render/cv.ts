@@ -1,18 +1,20 @@
-import type { ContactLink, Cv, UiLabels } from '../data/types';
+import type { Cv, UiLabels } from '../data/types';
 import { el } from './dom';
 import { renderExperience } from './experience';
 import { renderHeader } from './header';
 import { renderProject } from './project';
 import { renderEducation, renderLabelledList, renderLanguages, renderSection } from './sections';
 
-/** Screen-only controls. Behaviour is attached by the features modules. */
-/** The language switch names the other language in that language. */
-function renderToolbar(ui: UiLabels, alternate?: ContactLink, alternateLang?: string): HTMLElement {
+/**
+ * Screen-only controls; behaviour is attached by the features modules. The
+ * language switch names the other language in that language.
+ */
+function renderToolbar(ui: UiLabels, alternate?: Cv['alternate']): HTMLElement {
   return el(
     'nav',
-    { class: 'toolbar', 'aria-label': 'Actions' },
+    { class: 'toolbar', 'aria-label': ui.actions },
     alternate &&
-      el('a', { class: 'button', href: alternate.href, lang: alternateLang }, alternate.label),
+      el('a', { class: 'button', href: alternate.href, lang: alternate.lang }, alternate.label),
     el(
       'button',
       { class: 'button', type: 'button', 'data-action': 'toggle-theme' },
@@ -57,7 +59,7 @@ export function renderCv(cv: Cv): HTMLElement {
   return el(
     'div',
     { class: 'page' },
-    renderToolbar(ui, cv.alternate, cv.lang === 'fr' ? 'en' : 'fr'),
+    renderToolbar(ui, cv.alternate),
     renderHeader(cv.person, { label: ui.onlineVersion, url: cv.url }),
     el(
       'div',
@@ -88,7 +90,7 @@ export function renderCv(cv: Cv): HTMLElement {
         ),
         renderSection('languages', ui.languages, renderLanguages(cv.languages)),
         renderSection('education', ui.education, renderEducation(cv.education)),
-        renderSection('soft-skills', ui.softSkills, renderLabelledList(cv.softSkills))
+        renderSection('beyond-code', ui.beyondCode, renderLabelledList(cv.beyondCode))
       )
     )
   );
