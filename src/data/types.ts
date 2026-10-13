@@ -37,7 +37,7 @@ export interface Experience extends Entry {
   company: string;
   /** Sector or one-line project context. */
   context?: string;
-  /** Display string, e.g. "2022 – 2025 (2 ans 9 mois)". */
+  /** Display string, e.g. "05/2022 – 01/2025 (2 ans 9 mois)". */
   period: string;
 }
 

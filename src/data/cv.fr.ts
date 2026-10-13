@@ -24,7 +24,7 @@ export const cvFr: Cv = {
       role: 'Développeur firmware C++ embarqué',
       company: 'AIoTrust',
       context: 'Cybersécurité industrielle (OT)',
-      period: 'Oct. 2025 – présent',
+      period: '10/2025 – présent',
       summary:
         'Firmware temps réel C++ sur Cortex-M0+ (SAMD21) : acquisition cadencée, prétraitement embarqué, télémétrie MQTT et détection d’anomalies par autoencodeur GRU.',
       details: [
@@ -54,7 +54,7 @@ export const cvFr: Cv = {
       role: 'Développeur C++ et vision 3D',
       company: 'Augmenta',
       context: 'Nuages de points temps réel pour le spectacle vivant',
-      period: '2025 (6 mois)',
+      period: '03/2025 – 08/2025 (6 mois)',
       summary:
         'Traitement temps réel de nuages de points en C++ : régulateur adaptatif de filtrage VoxelGrid et moteur de monitoring thread-safe.',
       details: [
@@ -82,7 +82,7 @@ export const cvFr: Cv = {
       role: 'Développeur firmware C++ embarqué et IoT',
       company: 'MyLight Systems',
       context: 'Énergie et IoT',
-      period: '2022 – 2025 (2 ans 9 mois)',
+      period: '05/2022 – 01/2025 (2 ans 9 mois)',
       summary:
         'Firmware C++17 de pilotage et de mesure d’installations électriques (solaire, chauffe-eau, borne de recharge), connecté à Azure IoT.',
       details: [
@@ -100,7 +100,7 @@ export const cvFr: Cv = {
       role: 'Développeur C++, traitement de nuages de points',
       company: 'Technodigit',
       context: 'Logiciel 3D, ingénierie et métrologie',
-      period: '2022 (4 mois)',
+      period: '01/2022 – 04/2022 (4 mois)',
       summary:
         'Opérations sur nuages de points LiDAR et outils d’interaction 3D dans un logiciel de métrologie (C++17, Qt).',
       details: [
@@ -113,10 +113,10 @@ export const cvFr: Cv = {
     },
     {
       id: 'laris',
-      role: 'Développeur, vision par ordinateur 3D',
+      role: 'Stage — Développeur, vision par ordinateur 3D',
       company: 'LARIS',
       context: 'Reconstruction 3D par imagerie multi-vues et IA',
-      period: '2020 – 2022 (1 an 6 mois)',
+      period: '07/2020 – 12/2021 (1 an 6 mois)',
       summary:
         'Reconstruction 3D par Structure from Motion et réseaux de neurones pour restituer les structures occultées par le feuillage.',
       details: [
@@ -224,7 +224,10 @@ export const cvFr: Cv = {
   ],
   languages: [
     { name: 'Français', level: 'langue maternelle' },
-    { name: 'Anglais', level: 'professionnel' },
+    {
+      name: 'Anglais',
+      level: 'courant, niveau professionnel ; expérience en contexte international (LARIS)',
+    },
   ],
   education: [
     {
