@@ -36,8 +36,8 @@ const cv: Cv = {
       summary:
         'ML embarqué : autoencodeur GRU compact de détection d’anomalies sur séries temporelles, entraîné en Keras et exporté en TFLite (POC fonctionnel).',
       details: [
-        'Responsable de l’architecture firmware C++ (modules, contrats d’interface), décisions en ADR.',
-        'Portage et mesures du modèle sur STM32 et i.MX8 (CPU, RAM) pour l’inférence embarquée.',
+        'Responsable de l’architecture firmware C++ : modules, contrats d’interface, ADR.',
+        'Portage et mesures du modèle sur STM32 et i.MX8 (CPU, RAM).',
         'Chaîne capteurs : acquisition temps réel Cortex-M, prétraitement embarqué, télémétrie MQTT.',
         'Conception de l’autoencodeur GRU non supervisé (Keras/TensorFlow), dimensionné pour l’embarqué : anomalies détectées par erreur de reconstruction et seuil.',
         'GitLab CI et GTest ; développement agentique quotidien (Claude Code) avec revue et tests.',
@@ -71,7 +71,7 @@ const cv: Cv = {
       summary:
         'Filtrage adaptatif de nuages de points (PCL, VoxelGrid) qui tient un nombre de points cible quelle que soit la densité de la scène.',
       details: [
-        'Moteur de monitoring C++ thread-safe (JUCE) : collecte non bloquante, statistiques temps réel des flux.',
+        'Moteur de monitoring C++ thread-safe (JUCE) : statistiques temps réel non bloquantes.',
         'Interfaces 3D web Babylon.js via OSC/WebSockets ; choix d’architecture en ADR.',
         'Régulateur de filtrage VoxelGrid : ajuste la taille de voxel pour tenir un nombre de points cible, quelle que soit la densité de la scène.',
       ],
@@ -159,7 +159,7 @@ const cv: Cv = {
     {
       id: 'audiolab',
       name: 'AudioLab',
-      context: 'Détection open source de tonalité, d’accords et de tempo',
+      context: 'Tonalité, accords et tempo en temps réel (open source)',
       period: '2026',
       url: 'https://dicdaplon.github.io/AudioLab/',
       repo: 'https://github.com/Dicdaplon/AudioLab',

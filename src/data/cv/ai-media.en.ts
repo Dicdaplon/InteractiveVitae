@@ -36,8 +36,8 @@ const cv: Cv = {
       summary:
         'On-device ML: compact GRU autoencoder for time-series anomaly detection, trained in Keras and exported to TFLite (working POC).',
       details: [
-        'Own the C++ firmware architecture (modules, interface contracts), decisions in ADRs.',
-        'Port and benchmark the model on STM32 and i.MX8 (CPU, RAM) for on-device inference.',
+        'Own the C++ firmware architecture: modules, interface contracts, ADRs.',
+        'Port and benchmark the model on STM32 and i.MX8 (CPU, RAM).',
         'Build the sensor pipeline: real-time acquisition on Cortex-M, on-device preprocessing, MQTT telemetry.',
         'Designed the unsupervised GRU autoencoder (Keras/TensorFlow), sized for embedded targets: anomalies flagged by reconstruction error and threshold.',
         'GitLab CI and GTest; daily agentic development (Claude Code) with review and tests.',
@@ -69,9 +69,9 @@ const cv: Cv = {
       context: 'Real-time point clouds for live performance',
       period: 'May 2025 – Oct 2025 (6 months)',
       summary:
-        'Adaptive point-cloud filtering (PCL, VoxelGrid) that holds a target point count at any scene density.',
+        'Adaptive VoxelGrid filtering (PCL) holding a target point count at any scene density.',
       details: [
-        'Thread-safe C++ monitoring engine (JUCE): non-blocking collection, real-time stats on point and cluster streams.',
+        'Thread-safe C++ monitoring engine (JUCE) with non-blocking real-time stats.',
         'Babylon.js 3D web interfaces over OSC/WebSockets; architecture decisions in ADRs.',
         'Built a VoxelGrid filter controller that tunes voxel size to hold a target point count whatever the scene density.',
       ],
@@ -117,7 +117,7 @@ const cv: Cv = {
       context: '3D software for engineering and metrology',
       period: 'Mar 2022 – Jun 2022 (4 months)',
       summary:
-        'LiDAR point-cloud visualisation and reconstruction in 3D metrology software (C++, Qt).',
+        'LiDAR point-cloud visualisation and reconstruction in metrology software (C++, Qt).',
       details: [
         'Implemented reconstruction and manipulation operations on LiDAR point clouds.',
         'Built 3D visualisation and interaction tools with a Qt user interface.',
