@@ -10,9 +10,13 @@ export type Lang = (typeof LANGS)[number];
 
 export const PUBLIC_VARIANT = 'ai-media';
 
-/** Vite mode "<variant>-<lang>", e.g. "basic-en". Anything else means the public variant in French. */
+/** Vite's own modes, which mean the public variant in French. */
+const DEFAULT_MODES = ['development', 'production', 'test'];
+
+/** Vite mode "<variant>-<lang>", e.g. "basic-en". A malformed mode is an error, not a silent fallback. */
 export function parseMode(mode: string): { variant: string; lang: Lang } {
+  if (DEFAULT_MODES.includes(mode)) return { variant: PUBLIC_VARIANT, lang: 'fr' };
   const match = /^([a-z][a-z-]*)-(fr|en)$/.exec(mode);
-  if (!match) return { variant: PUBLIC_VARIANT, lang: 'fr' };
+  if (!match) throw new Error(`Unknown mode "${mode}": expected <variant>-<fr|en>`);
   return { variant: match[1]!, lang: match[2] as Lang };
 }

@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import type { Cv, Entry } from './types';
-import { PUBLIC_VARIANT } from './variants';
+import { parseMode, PUBLIC_VARIANT } from './variants';
 
 // Every variant present on this machine, public and private. Read from disk
 // rather than import.meta.glob, whose result Vitest caches across new files.
@@ -88,5 +88,16 @@ describe('public variant isolation', () => {
       const source = readFileSync(join(cvDir, `${PUBLIC_VARIANT}.${lang}.ts`), 'utf8');
       expect(source, lang).not.toMatch(/from '\.\/(?!\.\.)/);
     }
+  });
+});
+
+describe('parseMode', () => {
+  it('maps Vite default modes to the public variant in French', () => {
+    expect(parseMode('production')).toEqual({ variant: PUBLIC_VARIANT, lang: 'fr' });
+  });
+
+  it('reads variant and language, and rejects anything else', () => {
+    expect(parseMode('basic-en')).toEqual({ variant: 'basic', lang: 'en' });
+    expect(() => parseMode('basic-de')).toThrow();
   });
 });

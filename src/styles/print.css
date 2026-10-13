@@ -15,7 +15,6 @@
   .toolbar,
   .filter-bar,
   .entry__details,
-  [data-link='repo'],
   [data-print-hidden] {
     display: none !important;
   }
@@ -114,13 +113,13 @@
 
   /* Personal projects are a bonus: a three-column strip of QR code, name,
      one context line and URL. Summaries and technologies stay on screen. */
-  #projects {
+  .cv-section:has(> .entry--project) {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: var(--sp-5);
   }
 
-  #projects > .cv-section__title {
+  .cv-section:has(> .entry--project) > .cv-section__title {
     grid-column: 1 / -1;
   }
 
@@ -209,11 +208,6 @@
   .entry__tags {
     gap: 0;
     margin-top: var(--sp-1);
-  }
-
-  .entry__links {
-    margin-top: 0;
-    font-size: var(--step--2);
   }
 
   /* Chips become a plain " · " separated list that reads on any printer. */

@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import { defineConfig, type Plugin } from 'vite';
+import { fileURLToPath } from 'node:url';
+import { defineConfig, runnerImport, type Plugin } from 'vite';
 import type { Cv } from './src/data/types';
 import { parseMode } from './src/data/variants';
 
@@ -27,10 +27,11 @@ function cvMetadata(file: string): Plugin {
   return {
     name: 'cv-metadata',
     async transformIndexHtml(html) {
-      const { default: cv } = (await import(pathToFileURL(file).href)) as { default: Cv };
+      const { module } = await runnerImport<{ default: Cv }>(file);
+      const cv = module.default;
       return html
         .replace('%CV_LANG%', cv.lang)
-        .replace('%CV_TITLE%', escapeHtml(`${cv.person.name} — ${cv.person.title}`))
+        .replace('%CV_TITLE%', escapeHtml(`${cv.person.name} · ${cv.person.title}`))
         .replace('%CV_DESCRIPTION%', escapeHtml(cv.summary));
     },
   };
