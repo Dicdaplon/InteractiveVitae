@@ -10,13 +10,14 @@ npm install
 npm run dev        # http://localhost:5173/InteractiveVitae/
 ```
 
-| Script            | Purpose                                  |
-| ----------------- | ---------------------------------------- |
-| `npm run dev`     | Local dev server with hot reload         |
-| `npm test`        | Unit and guardrail tests (Vitest, jsdom) |
-| `npm run build`   | Type-check, then build into `dist/`      |
-| `npm run preview` | Serve the production build locally       |
-| `npm run format`  | Format every file with Prettier          |
+| Script                | Purpose                                  |
+| --------------------- | ---------------------------------------- |
+| `npm run dev`         | Local dev server with hot reload         |
+| `npm test`            | Unit and guardrail tests (Vitest, jsdom) |
+| `npm run build`       | Type-check, then build into `dist/`      |
+| `npm run preview`     | Serve the production build locally       |
+| `npm run check:print` | Check the printed CV fits one A4 page    |
+| `npm run format`      | Format every file with Prettier          |
 
 The screen version is concise by default: each experience and project shows
 a summary and key technologies, and "Détails" reveals the rest. Links such as
