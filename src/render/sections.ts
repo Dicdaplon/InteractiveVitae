@@ -41,7 +41,3 @@ export function renderEducation(education: Education[]): HTMLElement {
     )
   );
 }
-
-export function renderInlineList(items: string[]): HTMLElement {
-  return el('ul', { class: 'inline-list' }, ...items.map((item) => el('li', {}, item)));
-}

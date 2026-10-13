@@ -78,7 +78,6 @@ export interface UiLabels {
   projects: string;
   technicalSkills: string;
   softSkills: string;
-  sectors: string;
   languages: string;
   education: string;
   technologies: string;
@@ -107,7 +106,6 @@ export interface Cv {
   projects: Project[];
   technicalSkills: LabelledItem[];
   softSkills: LabelledItem[];
-  sectors: string[];
   languages: Language[];
   education: Education[];
   ui: UiLabels;

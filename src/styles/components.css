@@ -351,24 +351,6 @@
   color: var(--color-ink-muted);
 }
 
-/* --- Inline list (sectors) --- */
-
-.inline-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-1) var(--sp-2);
-  list-style: none;
-  font-size: var(--step--1);
-  line-height: var(--leading-ui);
-  color: var(--color-ink-muted);
-}
-
-.inline-list li:not(:last-child)::after {
-  content: '·';
-  margin-left: var(--sp-2);
-  color: var(--color-ink-faint);
-}
-
 /* --- Projects: dashed rule tells personal work apart from employment --- */
 
 .entry--project {

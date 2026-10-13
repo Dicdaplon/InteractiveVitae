@@ -3,13 +3,7 @@ import { el } from './dom';
 import { renderExperience } from './experience';
 import { renderHeader } from './header';
 import { renderProject } from './project';
-import {
-  renderEducation,
-  renderInlineList,
-  renderLabelledList,
-  renderLanguages,
-  renderSection,
-} from './sections';
+import { renderEducation, renderLabelledList, renderLanguages, renderSection } from './sections';
 
 /** Screen-only controls. Behaviour is attached by the features modules. */
 function renderToolbar(ui: UiLabels): HTMLElement {
@@ -91,8 +85,7 @@ export function renderCv(cv: Cv): HTMLElement {
           renderLabelledList(cv.technicalSkills)
         ),
         renderSection('languages', ui.languages, renderLanguages(cv.languages)),
-        renderSection('education', ui.education, renderEducation(cv.education)),
-        renderSection('sectors', ui.sectors, renderInlineList(cv.sectors))
+        renderSection('education', ui.education, renderEducation(cv.education))
       )
     )
   );

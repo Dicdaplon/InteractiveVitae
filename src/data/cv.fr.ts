@@ -5,20 +5,19 @@ export const cvFr: Cv = {
   url: 'https://dicdaplon.github.io/InteractiveVitae/',
   person: {
     name: 'Chafik Lekouara',
-    title: 'Développeur C/C++ — Systèmes embarqués & logiciels innovants',
+    title: 'Ingénieur logiciel embarqué C/C++ — temps réel, signal et 3D',
     location: 'Lyon, France',
     email: 'chafik.lekouara@gmail.com',
-    phone: '06 68 00 29 02',
     links: [
       {
         label: 'linkedin.com/in/chafiklekouara',
         href: 'https://www.linkedin.com/in/chafiklekouara',
       },
     ],
-    notes: ['Ouvert au télétravail', 'Pas de permis de conduire'],
+    notes: ['Ouvert au télétravail'],
   },
   summary:
-    'Développeur C/C++ expérimenté en systèmes embarqués, traitement du signal, imagerie et 3D, à la recherche de projets ambitieux alliant performance et innovation.',
+    'Développeur C/C++ depuis 2020, spécialisé firmware et temps réel : microcontrôleurs Cortex-M, Linux embarqué, télémétrie MQTT et cloud IoT, tests en intégration continue. Double compétence en traitement du signal et vision 3D, issue d’un master Électronique, Signal, Audio, Vidéo.',
   experiences: [
     {
       id: 'aiotrust',
@@ -185,57 +184,43 @@ export const cvFr: Cv = {
     },
   ],
   technicalSkills: [
-    { label: 'Langages', value: 'C++17 (design patterns, RAII), C, Python, JavaScript' },
+    { label: 'Langages', value: 'C++17 (RAII, design patterns), C, Python, TypeScript/JavaScript' },
     {
-      label: 'Signal, image et vision 3D',
+      label: 'Embarqué et temps réel',
       value:
-        'OpenCV, PCL, nuages de points, Structure from Motion, JUCE, Keras, TensorFlow, conception de modèles',
+        'ARM Cortex-M0+ (SAMD21), Linux embarqué (OpenWrt), MQTT, I2C, liaison série/USB, flash/CRC, multithreading',
     },
     {
-      label: 'Systèmes embarqués',
-      value: 'SAMD21, ARM Cortex-M0+, Arduino, MQTT, I2C, OSC, temps réel',
-    },
-    {
-      label: 'Systèmes et outils',
+      label: 'Signal, vision et 3D',
       value:
-        'Linux, OpenWrt, Azure IoT, Git, GTest, intégration continue, Qt, Vite, Babylon.js, Scrum, Doxygen, UML',
+        'Nuages de points (PCL, VoxelGrid), Structure from Motion, OpenCV, filtrage numérique, JUCE, TensorFlow/Keras',
+    },
+    { label: 'IoT et protocoles', value: 'Azure IoT (Device Twin), JSON, OSC, WebSockets' },
+    {
+      label: 'Qualité et outils',
+      value: 'GTest, intégration continue, Git, Qt, Doxygen, ADR, Scrum',
     },
     {
-      label: 'Outils 3D et création',
-      value: 'Blender, Unity, SolidWorks, impression 3D, Adobe Premiere',
+      label: 'Développement assisté par IA',
+      value: 'Claude Code, workflows agentiques avec revue et tests',
     },
-    { label: 'Développement assisté par IA', value: 'Claude Code, workflows agentiques' },
   ],
   softSkills: [
     {
-      label: 'Pédagogie et transmission',
+      label: 'Collectif musical',
       value:
-        'Enseignement des mathématiques, de la physique et de la musique ; soutien scolaire bénévole',
+        'Création et animation d’un collectif musical à Lyon depuis 3 ans : jams, événements, coordination.',
     },
     {
-      label: 'Gestion de projet et d’événements',
-      value:
-        'Création et gestion d’un collectif musical à Lyon depuis 3 ans (événementiel, coordination, dimension sociale)',
+      label: 'Enseignement',
+      value: 'Mathématiques, physique et musique ; soutien scolaire bénévole.',
     },
     {
-      label: 'Méthode et qualité',
+      label: 'Création',
       value:
-        'Rédaction d’ADR et documentation technique, méthodologie Agile (Scrum), tests et intégration continue',
+        'Traitement du son, montage vidéo (Adobe Premiere), photographie événementielle, Blender, impression 3D.',
+      printHidden: true,
     },
-    {
-      label: 'Création audiovisuelle et image',
-      value:
-        'Traitement du son, montage vidéo (Adobe Premiere), photographie événementielle ; créativité et autonomie',
-    },
-  ],
-  sectors: [
-    'Cybersécurité industrielle (OT)',
-    'Énergie et IoT',
-    'Spectacle vivant et événementiel',
-    'Ingénierie et métrologie 3D',
-    'Vision par ordinateur et imagerie',
-    'Formation et enseignement',
-    'Audiovisuel et culturel',
   ],
   languages: [
     { name: 'Français', level: 'langue maternelle' },
@@ -260,8 +245,7 @@ export const cvFr: Cv = {
     experience: 'Expérience professionnelle',
     projects: 'Réalisations personnelles',
     technicalSkills: 'Compétences techniques',
-    softSkills: 'Compétences transversales',
-    sectors: 'Secteurs et domaines',
+    softSkills: 'Au-delà du code',
     languages: 'Langues',
     education: 'Formation',
     technologies: 'Technologies',
