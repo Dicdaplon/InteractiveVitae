@@ -1,0 +1,303 @@
+/* Components, one block per renderer in src/render/. Only var() values here. */
+
+/* --- Toolbar and buttons --- */
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+
+.button {
+  font: inherit;
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--r-2);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+
+.button:hover {
+  background: var(--color-sunken);
+}
+
+.button--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-on);
+}
+
+.button--primary:hover {
+  background: var(--color-link);
+}
+
+.button--small {
+  padding: var(--sp-1) var(--sp-2);
+  font-size: var(--step--2);
+}
+
+/* --- Header --- */
+
+.cv-header {
+  padding-bottom: var(--sp-5);
+  margin-bottom: var(--sp-6);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.cv-header__name {
+  font-size: var(--step-4);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+}
+
+.cv-header__title {
+  margin-top: var(--sp-1);
+  font-size: var(--step-2);
+  line-height: var(--leading-snug);
+  color: var(--color-accent);
+}
+
+.cv-header__contact,
+.cv-header__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-4);
+  list-style: none;
+  margin-top: var(--sp-3);
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+}
+
+.cv-header__notes {
+  margin-top: var(--sp-1);
+  color: var(--color-ink-muted);
+}
+
+/* --- Sections --- */
+
+.cv-section + .cv-section {
+  margin-top: var(--sp-6);
+}
+
+.cv-section__title {
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-1);
+  border-bottom: 1px solid var(--color-line);
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.summary {
+  max-width: var(--measure);
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+}
+
+/* --- Filter bar --- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+  margin-bottom: var(--sp-4);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-2);
+  background: var(--color-sunken);
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+  color: var(--color-ink-muted);
+}
+
+.filter-bar__status {
+  flex: 1 1 20ch;
+}
+
+/* --- Experience timeline --- */
+
+.experience {
+  position: relative;
+  padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-5);
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-timeline);
+  border-radius: var(--r-3);
+  background: var(--color-surface);
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    background-color var(--dur-2) var(--ease-out);
+}
+
+.experience + .experience {
+  margin-top: var(--sp-4);
+}
+
+.experience__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--sp-4);
+  align-items: baseline;
+}
+
+.experience__role {
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+}
+
+.experience__company {
+  color: var(--color-accent);
+}
+
+.experience__period {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+}
+
+.experience__context {
+  grid-column: 1 / -1;
+  font-size: var(--step--1);
+  font-style: italic;
+  color: var(--color-ink-muted);
+}
+
+.experience__highlights {
+  max-width: var(--measure);
+  margin-top: var(--sp-3);
+  padding-left: var(--sp-4);
+}
+
+.experience__highlights li + li {
+  margin-top: var(--sp-1);
+}
+
+.experience__highlights li::marker {
+  color: var(--color-accent);
+}
+
+.experience__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  margin-top: var(--sp-3);
+}
+
+/* Filter states, set by features/techFilter.ts on the experience section. */
+.experience[data-match='true'] {
+  border-left-color: var(--color-accent);
+  background: var(--color-highlight);
+  box-shadow: var(--shadow-1);
+}
+
+.experience[data-match='false'] {
+  opacity: 0.55;
+}
+
+@media (max-width: 560px) {
+  .experience__header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* --- Technology chips --- */
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  line-height: var(--leading-ui);
+  padding: 0 var(--sp-2);
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  background: var(--color-tag-bg);
+  color: var(--color-tag-ink);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+
+.tag:hover {
+  border-color: var(--color-accent);
+}
+
+.tag[aria-pressed='true'] {
+  background: var(--color-accent);
+  color: var(--color-accent-on);
+}
+
+/* --- Label / value lists (skills, languages) --- */
+
+.labelled-list__label {
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: var(--leading-ui);
+}
+
+.labelled-list__value {
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+  color: var(--color-ink-muted);
+}
+
+.labelled-list__value + .labelled-list__label {
+  margin-top: var(--sp-3);
+}
+
+/* --- Education --- */
+
+.education {
+  list-style: none;
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+}
+
+.education__item + .education__item {
+  margin-top: var(--sp-3);
+}
+
+.education__degree {
+  font-weight: 600;
+}
+
+.education__school {
+  color: var(--color-ink-muted);
+}
+
+.education__period {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink-muted);
+}
+
+/* --- Inline list (sectors) --- */
+
+.inline-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-2);
+  list-style: none;
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+  color: var(--color-ink-muted);
+}
+
+.inline-list li:not(:last-child)::after {
+  content: '·';
+  margin-left: var(--sp-2);
+  color: var(--color-ink-faint);
+}

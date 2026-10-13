@@ -1,3 +1,6 @@
+import './styles/tokens.css';
+import './styles/base.css';
+import './styles/components.css';
 import { cvFr } from './data/cv.fr';
 import { renderCv } from './render/cv';
 
