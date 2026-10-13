@@ -112,7 +112,25 @@
   }
 
   .entry--project {
+    position: relative;
+    min-height: var(--qr-size);
+    padding-right: calc(var(--qr-size) + var(--sp-4));
     border-left-style: dashed;
+  }
+
+  .qr {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--qr-size);
+    height: var(--qr-size);
+    color: var(--color-ink);
+  }
+
+  .entry[data-print-compact] > .entry__summary,
+  .entry[data-print-compact] > .entry__tags {
+    display: none;
   }
 
   .entry + .entry {

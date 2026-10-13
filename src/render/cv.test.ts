@@ -3,6 +3,7 @@ import cvFr from '../data/cv/basic.fr';
 import { renderCv } from './cv';
 import { el } from './dom';
 import { renderEntry } from './entry';
+import { renderQrCode } from './qr';
 import { bareUrl } from './url';
 
 describe('el', () => {
@@ -117,5 +118,22 @@ describe('bareUrl', () => {
       'dicdaplon.github.io/LoloupLive'
     );
     expect(bareUrl('https://ecoleduloup.fr')).toBe('ecoleduloup.fr');
+  });
+});
+
+describe('renderQrCode', () => {
+  it('draws one labelled currentColor path per code', () => {
+    const svg = renderQrCode('https://dicdaplon.github.io/AudioLab/', 'AudioLab');
+    expect(svg.getAttribute('aria-label')).toBe('AudioLab');
+    expect(svg.querySelectorAll('path')).toHaveLength(1);
+    expect(svg.querySelector('path')?.getAttribute('fill')).toBe('currentColor');
+    expect(svg.querySelector('path')?.getAttribute('d')?.length).toBeGreaterThan(100);
+  });
+
+  it('gives every project a QR code to its live site', () => {
+    const page = renderCv(cvFr);
+    for (const project of cvFr.projects) {
+      expect(page.querySelector(`#project-${project.id} svg.qr`), project.id).not.toBeNull();
+    }
   });
 });

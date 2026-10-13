@@ -102,6 +102,7 @@
   /* --- Layout --- */
   --container: 1200px; /* sidebar + main column, centred */
   --gutter: 1rem; /* 16px page side padding on mobile; components may use --sp-5 >= 720px */
+  --qr-size: 4.5rem; /* QR codes only render in print; see the print block */
   --sidebar: 19rem; /* 304px left column (identity, contact, skills) >= 1024px */
 
   /* --- Motion --- */
@@ -255,6 +256,7 @@
 
     --container: 100%;
     --gutter: 0; /* @page margins handle the edges */
+    --qr-size: 17mm; /* scannable from an A4 sheet at arm's length */
     --sidebar: 50mm; /* left column on a 186mm text block (A4 minus 12mm margins) */
 
     --dur-1: 0ms;

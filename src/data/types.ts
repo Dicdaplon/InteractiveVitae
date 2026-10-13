@@ -30,6 +30,8 @@ export interface Entry {
   keyTechnologies: string[];
   /** Leaves the item out of the printed page only. */
   printHidden?: boolean;
+  /** Prints only the heading line (title, period, context). */
+  printCompact?: boolean;
 }
 
 export interface Experience extends Entry {

@@ -78,6 +78,7 @@ export function renderEntry(entry: Entry, heading: EntryHeading, ui: UiLabels): 
       id: heading.domId,
       'data-technologies': JSON.stringify(entry.technologies),
       'data-print-hidden': entry.printHidden ? '' : undefined,
+      'data-print-compact': entry.printCompact ? '' : undefined,
     },
     el(
       'header',

@@ -1,6 +1,7 @@
 import type { Project, UiLabels } from '../data/types';
 import { el } from './dom';
 import { renderEntry } from './entry';
+import { renderQrCode } from './qr';
 import { bareUrl } from './url';
 
 function renderLinks(project: Project, ui: UiLabels): HTMLElement {
@@ -18,7 +19,9 @@ function renderLinks(project: Project, ui: UiLabels): HTMLElement {
       bareUrl(project.url)
     ),
     project.repo &&
-      el('a', { href: project.repo, rel: 'noopener', 'data-link': 'repo' }, ui.sourceCode)
+      el('a', { href: project.repo, rel: 'noopener', 'data-link': 'repo' }, ui.sourceCode),
+    // Paper only: lets a printed CV reach the live project.
+    renderQrCode(project.url, `${ui.visitSite} ${project.name}`)
   );
 }
 

@@ -356,6 +356,11 @@
   color: var(--color-ink-muted);
 }
 
+/* QR codes are for paper; on screen the link itself is clickable. */
+.qr {
+  display: none;
+}
+
 /* --- Projects: dashed rule tells personal work apart from employment --- */
 
 .entry--project {
