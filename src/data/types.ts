@@ -98,8 +98,8 @@ export interface UiLabels {
 
 export interface Cv {
   lang: string;
-  /** Public URL of the interactive version, printed in the header. */
-  url: string;
+  /** Public URL of the interactive version, printed in the header. Omit for unpublished variants. */
+  url?: string;
   person: Person;
   summary: string;
   experiences: Experience[];

@@ -1,10 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { cvFr } from './cv.fr';
-import type { Entry } from './types';
+import type { Cv, Entry } from './types';
 
-const entries: Entry[] = [...cvFr.experiences, ...cvFr.projects];
+// Every variant present on this machine, public and private.
+const modules = import.meta.glob<{ default: Cv }>('./cv/**/*.ts', { eager: true });
+const variants = Object.entries(modules).map(([path, module]) => ({ path, cv: module.default }));
 
-describe('cvFr entries', () => {
+describe.each(variants)('CV entries in $path', ({ cv }) => {
+  const entries: Entry[] = [...cv.experiences, ...cv.projects];
+
   it('uses unique ids that are safe in DOM ids', () => {
     const ids = entries.map((entry) => entry.id);
     expect(new Set(ids).size).toBe(ids.length);
@@ -36,15 +39,27 @@ describe('cvFr entries', () => {
   });
 });
 
-describe('cvFr links', () => {
+describe.each(variants)('CV links in $path', ({ cv }) => {
   it('only links to https URLs', () => {
     const urls = [
-      cvFr.url,
-      ...cvFr.person.links.map((link) => link.href),
-      ...cvFr.projects.flatMap((project) =>
+      ...(cv.url ? [cv.url] : []),
+      ...cv.person.links.map((link) => link.href),
+      ...cv.projects.flatMap((project) =>
         project.repo ? [project.url, project.repo] : [project.url]
       ),
     ];
     for (const url of urls) expect(url).toMatch(/^https:\/\//);
+  });
+});
+
+describe('CV variants', () => {
+  it('include the public basic French version', () => {
+    expect(variants.map(({ path }) => path)).toContain('./cv/basic.fr.ts');
+  });
+
+  it('only give a public URL to the basic version', () => {
+    for (const { path, cv } of variants) {
+      if (cv.url) expect(path, path).toMatch(/^\.\/cv\/basic\./);
+    }
   });
 });

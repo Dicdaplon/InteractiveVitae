@@ -1,5 +1,7 @@
-// Checks that the printed CV fits on exactly one A4 page, with some headroom.
-// Usage: npm run check:print  (builds, serves dist/, prints with Chromium).
+// Checks that the printed CV fits on exactly one A4 page, with some headroom,
+// and writes the PDF of each checked variant to dist-print/<mode>.pdf.
+// Usage: npm run check:print [-- <mode>...]   e.g. -- basic-fr ai-media-en
+// Without arguments, the public version (basic-fr) is checked.
 import { mkdir, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { build, preview } from 'vite';
@@ -29,14 +31,26 @@ function countPages(pdf) {
   return (pdf.toString('latin1').match(/\/Type\s*\/Page\b(?!s)/g) ?? []).length;
 }
 
-await build({ logLevel: 'warn' });
-const server = await preview({ preview: { port: 0 }, logLevel: 'warn' });
-const url = server.resolvedUrls?.local[0];
+const modes = process.argv.slice(2);
+if (modes.length === 0) modes.push('basic-fr');
+
 const browser = await chromium.launch();
 const failures = [];
+await mkdir(OUT_DIR, { recursive: true });
 
-try {
-  await mkdir(OUT_DIR, { recursive: true });
+for (const mode of modes) {
+  await build({ mode, logLevel: 'warn' });
+  const server = await preview({ mode, preview: { port: 0 }, logLevel: 'warn' });
+  const url = server.resolvedUrls?.local[0];
+  try {
+    await checkMode(mode, url);
+  } finally {
+    await new Promise((resolve) => server.httpServer.close(resolve));
+  }
+}
+await browser.close();
+
+async function checkMode(mode, url) {
   for (const [index, scenario] of scenarios.entries()) {
     const page = await browser.newPage({ viewport: TEXT_BLOCK });
     await page.goto(url);
@@ -48,18 +62,15 @@ try {
     const fill = height / TEXT_BLOCK.height;
     const pdf = await page.pdf({ format: 'A4', preferCSSPageSize: true, printBackground: false });
     const pages = countPages(pdf);
-    await writeFile(`${OUT_DIR}/cv-${index}.pdf`, pdf);
+    if (index === 0) await writeFile(`${OUT_DIR}/${mode}.pdf`, pdf);
 
     const ok = pages === 1 && fill <= MAX_FILL;
     console.log(
-      `${ok ? 'ok  ' : 'FAIL'} ${scenario.name}: ${pages} page(s), ${Math.round(fill * 100)}% of the page used`
+      `${ok ? 'ok  ' : 'FAIL'} ${mode}, ${scenario.name}: ${pages} page(s), ${Math.round(fill * 100)}% of the page used`
     );
-    if (!ok) failures.push(scenario.name);
+    if (!ok) failures.push(`${mode}, ${scenario.name}`);
     await page.close();
   }
-} finally {
-  await browser.close();
-  await new Promise((resolve) => server.httpServer.close(resolve));
 }
 
 if (failures.length > 0) {

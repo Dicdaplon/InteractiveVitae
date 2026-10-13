@@ -1,6 +1,6 @@
-import type { Cv } from './types';
+import type { Cv } from '../types';
 
-export const cvFr: Cv = {
+const cv: Cv = {
   lang: 'fr',
   url: 'https://dicdaplon.github.io/InteractiveVitae/',
   person: {
@@ -266,3 +266,5 @@ export const cvFr: Cv = {
     onlineVersion: 'Version interactive et détails :',
   },
 };
+
+export default cv;

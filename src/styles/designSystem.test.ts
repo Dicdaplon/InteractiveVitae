@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { cvFr } from '../data/cv.fr';
+import cvFr from '../data/cv/basic.fr';
 import { renderCv } from '../render/cv';
 
 /** Guardrails from DESIGN.md, enforced so they cannot silently erode. */
