@@ -9,6 +9,10 @@ const cv: Cv = {
     email: 'chafik.lekouara@gmail.com',
     links: [
       {
+        label: 'github.com/Dicdaplon',
+        href: 'https://github.com/Dicdaplon',
+      },
+      {
         label: 'linkedin.com/in/chafiklekouara',
         href: 'https://www.linkedin.com/in/chafiklekouara',
       },
@@ -127,13 +131,14 @@ const cv: Cv = {
     },
     {
       id: 'laris',
-      role: 'PhD Researcher in Imaging, 3D and Machine Learning',
+      role: 'Researcher, 3D Imaging and Machine Learning',
       company: 'LARIS, Angers',
-      context: '3D rose plant architectures, dynamic simulation',
+      context: 'International research team, 3D rose plant architectures',
       period: 'Oct 2020 – Aug 2021 (11 months)',
       summary:
         'AI segmentation of 3D rose plant models benchmarked against classical methods; growth models and lighting simulation (ray tracing, LiDAR).',
       details: [
+        'Started as a master’s internship, continued on a PhD contract (not completed).',
         'Improved and generalised an AI segmentation method to 3D models.',
         'Adapted classical segmentation methods to benchmark the approach against the state of the art.',
         'Built dynamic rose plant models: growth, light environment, 3D modelling.',
@@ -272,7 +277,7 @@ const cv: Cv = {
   ],
   languages: [
     { name: 'French', level: 'native' },
-    { name: 'English', level: 'fluent, professional; international research environment (LARIS)' },
+    { name: 'English', level: 'fluent, professional; worked in an international research team' },
   ],
   education: [
     {

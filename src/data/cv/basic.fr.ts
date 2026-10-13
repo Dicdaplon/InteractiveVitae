@@ -10,6 +10,10 @@ const cv: Cv = {
     email: 'chafik.lekouara@gmail.com',
     links: [
       {
+        label: 'github.com/Dicdaplon',
+        href: 'https://github.com/Dicdaplon',
+      },
+      {
         label: 'linkedin.com/in/chafiklekouara',
         href: 'https://www.linkedin.com/in/chafiklekouara',
       },
@@ -128,13 +132,14 @@ const cv: Cv = {
     },
     {
       id: 'laris',
-      role: 'Doctorant en imagerie, 3D et machine learning',
+      role: 'Chercheur en imagerie 3D et machine learning',
       company: 'LARIS, Angers',
-      context: 'Architectures 3D de rosiers, simulation dynamique',
+      context: 'Équipe de recherche internationale, architectures 3D de rosiers',
       period: '10/2020 – 08/2021 (11 mois)',
       summary:
         'Segmentation par IA de modèles 3D de rosiers, comparée aux méthodes classiques ; modèles de croissance et simulation d’éclairage (ray tracing, LiDAR).',
       details: [
+        'Stage de master poursuivi par un contrat doctoral (thèse non menée à terme).',
         'Amélioration et généralisation d’une segmentation par IA à des modèles 3D.',
         'Adaptation de méthodes de segmentation classiques pour comparer la méthode à l’état de l’art.',
         'Modèles de rosiers dynamiques : croissance, environnement lumineux, modélisation 3D.',
@@ -273,7 +278,7 @@ const cv: Cv = {
     { name: 'Français', level: 'langue maternelle' },
     {
       name: 'Anglais',
-      level: 'courant, niveau professionnel ; expérience en contexte international (LARIS)',
+      level: 'courant, professionnel ; travail en équipe de recherche internationale',
     },
   ],
   education: [
