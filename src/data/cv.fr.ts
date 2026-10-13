@@ -255,7 +255,7 @@ export const cvFr: Cv = {
     collapseAll: 'Tout replier',
     print: 'Imprimer / PDF',
     themeToggle: 'Changer de thème',
-    filterHint: 'Choisissez une technologie pour mettre en évidence les expériences associées.',
+    filterHint: 'Choisissez une technologie pour voir où elle a servi.',
     filterResult: '{count} élément(s) avec {tech}',
     clearFilter: 'Tout afficher',
     visitSite: 'Voir le site',
