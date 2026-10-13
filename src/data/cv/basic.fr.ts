@@ -111,6 +111,7 @@ const cv: Cv = {
     },
     {
       id: 'technodigit',
+      printCompact: true,
       role: 'Développeur logiciel, nuages de points',
       company: 'Technodigit (Hexagon)',
       context: 'Logiciel 3D, ingénierie et métrologie',
@@ -156,6 +157,32 @@ const cv: Cv = {
   ],
   projects: [
     {
+      id: 'audiolab',
+      name: 'AudioLab',
+      context: 'SDK d’analyse audio temps réel dans le navigateur',
+      period: '2026',
+      url: 'https://dicdaplon.github.io/AudioLab/',
+      repo: 'https://github.com/Dicdaplon/AudioLab',
+      summary:
+        'SDK open source d’analyse audio temps réel : détection de tonalité, d’accords et de tempo au micro, DSP écrit à la main et testé.',
+      details: [
+        'Tonalité par corrélation de Krumhansl–Schmuckler sur 24 tonalités et fenêtres glissantes ; accords par similarité cosinus avec 24 gabarits de triades.',
+        'Tempo par enveloppe d’onsets et spectre de battement (40–240 BPM), capture sans trou sur le thread audio (AudioWorklet).',
+        'Résultats fixés par les tests : 24/24 accords et tonalités synthétiques, 12/15 enregistrements réels en top-1 pour la tonalité, tempo à ±3 BPM.',
+        'Deux jeux d’entraînement de l’oreille au micro ; cœur TypeScript sans framework et paquet React, CI et déploiement GitHub Pages.',
+      ],
+      technologies: [
+        'Traitement du signal',
+        'Web Audio',
+        'AudioWorklet',
+        'TypeScript',
+        'FFT',
+        'React',
+        'Vitest',
+      ],
+      keyTechnologies: ['Traitement du signal', 'Web Audio', 'AudioWorklet', 'TypeScript'],
+    },
+    {
       id: 'ecole-du-loup',
       name: 'École du Loup(s)',
       context: 'Cours de musique en ligne avec outils audio interactifs',
@@ -183,6 +210,7 @@ const cv: Cv = {
     },
     {
       id: 'lolouplive',
+      printHidden: true,
       name: 'LoloupLive',
       context: 'Application web temps réel pour les jams du collectif',
       period: '2025',
