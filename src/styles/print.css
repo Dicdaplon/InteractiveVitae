@@ -112,21 +112,77 @@
     break-inside: avoid;
   }
 
-  .entry--project {
-    position: relative;
-    min-height: var(--qr-size);
-    padding-right: calc(var(--qr-size) + var(--sp-4));
-    border-left-style: dashed;
+  /* Personal projects are a bonus: a three-column strip of QR code, name,
+     one context line and URL. Summaries and technologies stay on screen. */
+  #projects {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--sp-5);
   }
 
-  .qr {
+  #projects > .cv-section__title {
+    grid-column: 1 / -1;
+  }
+
+  .entry--project,
+  .entry--project[data-match] {
+    display: grid;
+    grid-template-columns: var(--qr-size) minmax(0, 1fr);
+    column-gap: var(--sp-3);
+    align-items: start;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .entry--project + .entry--project {
+    margin-top: 0;
+  }
+
+  .entry--project > * {
+    grid-column: 2;
+  }
+
+  .entry--project > .entry__summary,
+  .entry--project > .entry__tags {
+    display: none;
+  }
+
+  .entry--project .entry__header {
     display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
+  }
+
+  .entry--project .entry__title {
+    display: inline;
+  }
+
+  .entry--project .entry__period {
+    display: inline;
+    margin-left: var(--sp-2);
+  }
+
+  /* The QR code is the link on paper and in the PDF; the URL text would wrap badly. */
+  .entry--project .entry__links {
+    display: none;
+  }
+
+  .entry__qr {
+    display: block;
+    grid-column: 1;
+    grid-row: 1 / span 2;
     width: var(--qr-size);
     height: var(--qr-size);
     color: var(--color-ink);
+  }
+
+  .entry__print-highlights {
+    display: block;
+    margin-top: var(--sp-1);
+    padding-left: var(--sp-4);
+  }
+
+  .entry__print-highlights li::marker {
+    color: var(--color-accent);
   }
 
   .entry[data-print-compact] > .entry__summary,

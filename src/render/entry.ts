@@ -94,6 +94,12 @@ export function renderEntry(entry: Entry, heading: EntryHeading, ui: UiLabels): 
       heading.context && el('p', { class: 'entry__context' }, heading.context)
     ),
     el('p', { class: 'entry__summary' }, entry.summary),
+    (entry.printHighlights ?? 0) > 0 &&
+      el(
+        'ul',
+        { class: 'entry__print-highlights' },
+        ...entry.details.slice(0, entry.printHighlights).map((detail) => el('li', {}, detail))
+      ),
     renderTags(entry.keyTechnologies, ui.technologies),
     heading.extra,
     renderDetails(entry, heading, ui)

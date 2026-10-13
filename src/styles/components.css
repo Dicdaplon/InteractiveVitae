@@ -357,8 +357,15 @@
 }
 
 /* QR codes are for paper; on screen the link itself is clickable. */
-.qr {
+.entry__qr,
+.entry__print-highlights {
   display: none;
+}
+
+.qr {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* --- Projects: dashed rule tells personal work apart from employment --- */

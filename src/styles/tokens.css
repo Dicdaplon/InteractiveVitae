@@ -256,7 +256,7 @@
 
     --container: 100%;
     --gutter: 0; /* @page margins handle the edges */
-    --qr-size: 17mm; /* scannable from an A4 sheet at arm's length */
+    --qr-size: 15mm; /* still scannable from an A4 sheet at arm's length */
     --sidebar: 50mm; /* left column on a 186mm text block (A4 minus 12mm margins) */
 
     --dur-1: 0ms;

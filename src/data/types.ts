@@ -32,6 +32,8 @@ export interface Entry {
   printHidden?: boolean;
   /** Prints only the heading line (title, period, context). */
   printCompact?: boolean;
+  /** Number of leading `details` bullets also printed under the summary. */
+  printHighlights?: number;
 }
 
 export interface Experience extends Entry {
