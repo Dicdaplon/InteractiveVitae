@@ -70,6 +70,8 @@ export interface UiLabels {
   languages: string;
   education: string;
   technologies: string;
+  details: string;
+  moreTechnologies: string;
   print: string;
   themeToggle: string;
   filterHint: string;

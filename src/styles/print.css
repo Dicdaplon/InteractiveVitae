@@ -47,8 +47,8 @@
   }
 
   /* Cards become plain blocks on paper: no fill, no dimming, a single rule. */
-  .experience,
-  .experience[data-match] {
+  .entry,
+  .entry[data-match] {
     padding: 0 0 0 var(--sp-4);
     border: 0;
     border-left: 1.5pt solid var(--color-timeline);
@@ -59,7 +59,7 @@
     break-inside: avoid;
   }
 
-  .experience + .experience {
+  .entry + .entry {
     margin-top: var(--sp-4);
   }
 

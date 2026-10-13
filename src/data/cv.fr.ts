@@ -217,6 +217,8 @@ export const cvFr: Cv = {
     languages: 'Langues',
     education: 'Formation',
     technologies: 'Technologies',
+    details: 'Détails',
+    moreTechnologies: 'Autres technologies',
     print: 'Imprimer / PDF',
     themeToggle: 'Changer de thème',
     filterHint: 'Choisissez une technologie pour mettre en évidence les expériences associées.',

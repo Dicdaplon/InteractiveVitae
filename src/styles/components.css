@@ -125,9 +125,9 @@
   flex: 1 1 20ch;
 }
 
-/* --- Experience timeline --- */
+/* --- Entry cards (experiences, projects) --- */
 
-.experience {
+.entry {
   position: relative;
   padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-5);
   border: 1px solid var(--color-line);
@@ -139,28 +139,28 @@
     background-color var(--dur-2) var(--ease-out);
 }
 
-.experience + .experience {
+.entry + .entry {
   margin-top: var(--sp-4);
 }
 
-.experience__header {
+.entry__header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   column-gap: var(--sp-4);
   align-items: baseline;
 }
 
-.experience__role {
+.entry__title {
   font-size: var(--step-1);
   font-weight: 600;
   line-height: var(--leading-snug);
 }
 
-.experience__company {
+.entry__org {
   color: var(--color-accent);
 }
 
-.experience__period {
+.entry__period {
   font-family: var(--font-mono);
   font-size: var(--step--2);
   font-variant-numeric: tabular-nums;
@@ -168,47 +168,109 @@
   white-space: nowrap;
 }
 
-.experience__context {
+.entry__context {
   grid-column: 1 / -1;
   font-size: var(--step--1);
   font-style: italic;
   color: var(--color-ink-muted);
 }
 
-.experience__highlights {
+.entry__summary {
   max-width: var(--measure);
-  margin-top: var(--sp-3);
-  padding-left: var(--sp-4);
+  margin-top: var(--sp-2);
 }
 
-.experience__highlights li + li {
+.entry__details {
+  margin-top: var(--sp-3);
+}
+
+.entry__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  list-style: none;
+  font-size: var(--step--1);
+  line-height: var(--leading-ui);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+
+.entry__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.entry__toggle::before {
+  content: '▸';
+  color: var(--color-accent);
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.entry__toggle:hover {
+  color: var(--color-ink);
+}
+
+.entry__details[open] > .entry__toggle::before {
+  transform: rotate(90deg);
+}
+
+.entry__details[open] > .entry__body {
+  animation: reveal var(--dur-2) var(--ease-out);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.entry__more {
+  margin-top: var(--sp-3);
+}
+
+.entry__more-label {
+  font-size: var(--step--2);
+  color: var(--color-ink-muted);
+}
+
+.entry__more .entry__tags {
   margin-top: var(--sp-1);
 }
 
-.experience__highlights li::marker {
+.entry__highlights {
+  max-width: var(--measure);
+  margin-top: var(--sp-2);
+  padding-left: var(--sp-4);
+}
+
+.entry__highlights li + li {
+  margin-top: var(--sp-1);
+}
+
+.entry__highlights li::marker {
   color: var(--color-accent);
 }
 
-.experience__tags {
+.entry__tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-1);
   margin-top: var(--sp-3);
 }
 
-/* Filter states, set by features/techFilter.ts on the experience section. */
-.experience[data-match='true'] {
+/* Filter states, set by features/techFilter.ts. */
+.entry[data-match='true'] {
   border-left-color: var(--color-accent);
   background: var(--color-highlight);
   box-shadow: var(--shadow-1);
 }
 
-.experience[data-match='false'] {
+.entry[data-match='false'] {
   opacity: 0.55;
 }
 
 @media (max-width: 560px) {
-  .experience__header {
+  .entry__header {
     grid-template-columns: minmax(0, 1fr);
   }
 }
