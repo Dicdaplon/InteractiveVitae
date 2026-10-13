@@ -59,6 +59,8 @@ export interface UiLabels {
   print: string;
   themeToggle: string;
   filterHint: string;
+  /** Template with {count} and {tech} placeholders. */
+  filterResult: string;
   clearFilter: string;
 }
 

@@ -164,6 +164,7 @@ export const cvFr: Cv = {
     print: 'Imprimer / PDF',
     themeToggle: 'Changer de thème',
     filterHint: 'Choisissez une technologie pour mettre en évidence les expériences associées.',
+    filterResult: '{count} expérience(s) avec {tech}',
     clearFilter: 'Tout afficher',
   },
 };
