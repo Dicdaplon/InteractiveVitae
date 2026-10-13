@@ -97,6 +97,27 @@ a {
 }
 
 @media (min-width: 1024px) {
+  /* The toolbar overlaps the header's top-right corner instead of taking a row. */
+  .page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .page > * {
+    grid-column: 1 / -1;
+  }
+
+  .page > .toolbar {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    margin-bottom: 0;
+  }
+
+  .page > .cv-header {
+    grid-row: 1;
+  }
+
   .cv-layout {
     grid-template-columns: var(--sidebar) minmax(0, 1fr);
     grid-template-areas: 'aside main';
