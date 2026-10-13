@@ -84,6 +84,8 @@ export interface UiLabels {
   technologies: string;
   details: string;
   moreTechnologies: string;
+  expandAll: string;
+  collapseAll: string;
   print: string;
   themeToggle: string;
   filterHint: string;

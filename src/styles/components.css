@@ -258,6 +258,11 @@
   margin-top: var(--sp-3);
 }
 
+/* Deep-linked entry (#experience-<id>, #project-<id>). */
+.entry:target {
+  border-left-color: var(--color-accent);
+}
+
 /* Filter states, set by features/techFilter.ts. */
 .entry[data-match='true'] {
   border-left-color: var(--color-accent);

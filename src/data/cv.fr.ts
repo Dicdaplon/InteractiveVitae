@@ -267,6 +267,8 @@ export const cvFr: Cv = {
     technologies: 'Technologies',
     details: 'Détails',
     moreTechnologies: 'Autres technologies',
+    expandAll: 'Tout déplier',
+    collapseAll: 'Tout replier',
     print: 'Imprimer / PDF',
     themeToggle: 'Changer de thème',
     filterHint: 'Choisissez une technologie pour mettre en évidence les expériences associées.',

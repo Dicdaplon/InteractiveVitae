@@ -42,6 +42,11 @@ function renderFilterBar(ui: UiLabels): HTMLElement {
       'button',
       { class: 'button button--small', type: 'button', 'data-action': 'clear-filter', hidden: '' },
       ui.clearFilter
+    ),
+    el(
+      'button',
+      { class: 'button button--small', type: 'button', 'data-action': 'toggle-all' },
+      ui.expandAll
     )
   );
 }
