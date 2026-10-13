@@ -96,7 +96,7 @@ Section headings: uppercase is allowed only at `--step--1` with `letter-spacing:
 2, 4, 6, 8, 12, 16, 22, 28, 36, 48pt, so components keep their proportions without print overrides.
 
 - `--container: 1200px`, `--gutter: 1rem` (components may widen to `--sp-5` at ≥ 720px).
-- `--sidebar: 19rem` (304px): left column (identity, contact, skills filter) from 1024px; below that it stacks above the main column. Print: `54mm`.
+- `--sidebar: 19rem` (304px): left column (skills, languages, education, beyond code) from 1024px; below that it follows the main column. Print: `50mm`.
 - Radii: `--r-1` 2px chips, `--r-2` 4px buttons, `--r-3` 8px cards; `--r-pill` reserved for filter toggles.
 
 ## 5. Shadows
@@ -115,7 +115,8 @@ Durations: `--dur-1` 120ms (hover, focus, chip toggle), `--dur-2` 180ms (highlig
 2. Only user-triggered changes animate: filter toggle, hover, expand, theme switch.
 3. Animate only `opacity`, `transform`, `color`, `background-color`. Never `height` or `box-shadow` (fade a pseudo-element instead).
 4. Maximum travel 4px.
-5. Filtering does not reorder or move cards; it highlights and dims in place (no layout shift).
+5. Filtering does not reorder, move or expand cards; it highlights and dims in place (no layout shift).
+6. Expanding details fades the content in with a 4px slide; closing is instant (native `<details>`).
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -133,22 +134,31 @@ Durations: `--dur-1` 120ms (hover, focus, chip toggle), `--dur-2` 180ms (highlig
 ## 7. Print
 
 The print block in `tokens.css` uses `:root:root` (specificity 0,2,0) and sits last, so it wins over
-both dark-theme selectors. Suggested page setup (in the base/print stylesheet, `@page` cannot read custom properties):
+both dark-theme selectors. `@page` cannot read custom properties, so margins live in `print.css`:
 
 ```css
 @page {
   size: A4;
-  margin: 14mm 14mm 16mm;
+  margin: 10mm 12mm;
 }
 ```
 
-- **Target: 2 pages max**; 1 page for a "short" variant if one is ever produced.
-- **Hidden**: theme toggle, skill-filter controls, nav, "print/download" button, any hover-only affordance, video/iframe embeds, decorative icons that duplicate text.
-- **Expanded**: every collapsed `<details>`/accordion is opened; "show more" lists are rendered in full; filter dimming (`opacity`) is reset to 1; highlight is transparent.
-- **Links**: external links print their URL after the text in `--step--2` mono (`a[href^="http"]::after { content: " " attr(href) }`), except where the link text already is the URL (email, GitHub handle).
-- **Colour**: `print-color-adjust: exact` only on the accent rules and chips; layout must still read if the printer drops backgrounds (chips keep a hairline border).
-- **Page breaks**: `break-inside: avoid` on each experience/project card and on the header block; `break-after: avoid` on section headings; `orphans: 3; widows: 3` on paragraphs; sidebar content must fit page 1 (do not let it flow onto page 2).
-- Sidebar stays a left column in print (`--sidebar: 54mm` on a 182mm text block).
+- **Target: exactly one page**, enforced by `npm run check:print` (one PDF page, at most 95% of the
+  text block filled). The screen is the detailed version; paper is the summary.
+- **Deterministic**: theme, active filter and open details never change the printed page.
+- **Printed**: header (with "Version interactive et détails :" and the CV URL), profile, each entry's
+  title, period, context, summary and key technologies, project site URLs, the aside sections.
+- **Hidden**: toolbar, filter bar, every `.entry__details` (even when open), repository links, and
+  anything marked `printHidden` in the data (`data-print-hidden`).
+- **Technologies** print as a plain mono list separated by " · ", no chip fill, so nothing depends on
+  background graphics.
+- **Links**: visible link text is already the bare URL, so no `::after` URL injection.
+- **Page breaks**: `break-inside: avoid` on entries and the header, `break-after: avoid` on section
+  headings, `orphans: 3; widows: 3`. On one page they only matter when content overflows.
+- **Layout**: two columns, `--sidebar: 50mm` on a 186mm text block; header in two columns (identity
+  left, contact right).
+- **If content grows**: shorten summaries first, then mark the least relevant items `printHidden`.
+  Never rely on the print dialog's scale.
 
 ## 8. Guardrails
 

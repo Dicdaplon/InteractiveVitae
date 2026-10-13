@@ -18,8 +18,14 @@ npm run dev        # http://localhost:5173/InteractiveVitae/
 | `npm run preview` | Serve the production build locally       |
 | `npm run format`  | Format every file with Prettier          |
 
-The print version is the same page: use the "Imprimer / PDF" button or the
-browser print dialog, A4, and "Save as PDF".
+The screen version is concise by default: each experience and project shows
+a summary and key technologies, and "Détails" reveals the rest. Links such as
+`#experience-aiotrust` or `#project-lolouplive` open a card directly.
+
+The print version is the same page reduced to one A4 sheet: use the
+"Imprimer / PDF" button or the browser print dialog (A4, default margins,
+scale 100%) and "Save as PDF". `npm run check:print` needs Chromium once:
+`npx playwright install chromium`.
 
 ## Architecture
 
@@ -27,9 +33,10 @@ browser print dialog, A4, and "Save as PDF".
 src/
   data/       CV content (cv.fr.ts) and its types — the only file to edit for content
   render/     Pure functions turning data into DOM nodes, one module per section
-  features/   Behaviour attached to rendered nodes: theme, technology filter, print
+  features/   Behaviour attached to rendered nodes: theme, filter, details, print
   styles/     tokens.css (design tokens), base, components, print
   main.ts     Composition root: render, then wire features
+scripts/      check-print.mjs, the one-page print check (Playwright)
 ```
 
 - Data, rendering and behaviour are separate layers; each depends only on the
@@ -51,6 +58,7 @@ are enforced by `src/styles/designSystem.test.ts`.
 
 ## Deployment
 
-Every push to `main` runs format check, tests and build, then publishes
+Every push to `main` runs format check, tests, build and the one-page print
+check, then publishes
 `dist/` through GitHub Actions. In the repository settings, set
 **Pages → Source** to **GitHub Actions** once.
