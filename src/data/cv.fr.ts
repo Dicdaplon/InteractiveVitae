@@ -2,6 +2,7 @@ import type { Cv } from './types';
 
 export const cvFr: Cv = {
   lang: 'fr',
+  url: 'https://dicdaplon.github.io/InteractiveVitae/',
   person: {
     name: 'Chafik Lekouara',
     title: 'Développeur C/C++ — Systèmes embarqués & logiciels innovants',
@@ -137,6 +138,52 @@ export const cvFr: Cv = {
       keyTechnologies: ['Python', 'OpenCV', 'Structure from Motion', 'TensorFlow'],
     },
   ],
+  projects: [
+    {
+      id: 'ecole-du-loup',
+      name: 'École du Loup(s)',
+      context: 'Cours de musique en ligne avec outils audio interactifs',
+      period: '2026',
+      url: 'https://ecoleduloup.fr',
+      summary:
+        'Site d’enseignement musical conçu et développé seul : filtres biquad, détection de hauteur en temps réel et transcription audio dans le navigateur.',
+      details: [
+        'Exercices de mixage : filtres biquad écrits à la main, réponse en fréquence, modèle gain/bruit/écrêtage corrigé automatiquement et testable hors navigateur.',
+        'Accordeur et vérification d’accords au micro : détection de hauteur CREPE et transcription Basic Pitch (TensorFlow.js), un seul contexte audio partagé.',
+        'Soliste génératif (ImprovRNN) isolé dans un Web Worker pour ne pas bloquer le son.',
+        'Comptes et progression (Firebase Auth/Firestore), règles de sécurité testées sur émulateur.',
+        'Décisions d’architecture écrites, revue d’architecture vérifiée par exécution.',
+      ],
+      technologies: [
+        'TypeScript',
+        'Web Audio',
+        'Traitement du signal',
+        'TensorFlow',
+        'Web Workers',
+        'Tone.js',
+        'Next.js',
+        'Firebase',
+      ],
+      keyTechnologies: ['TypeScript', 'Web Audio', 'Traitement du signal', 'TensorFlow'],
+    },
+    {
+      id: 'lolouplive',
+      name: 'LoloupLive',
+      context: 'Application web temps réel pour les jams du collectif',
+      period: '2025',
+      url: 'https://dicdaplon.github.io/LoloupLive/',
+      repo: 'https://github.com/Dicdaplon/LoloupLive',
+      summary:
+        'Application temps réel utilisée en session : paroles et grilles d’accords, chat projeté, capture photo ; logique testée et design system vérifié par test.',
+      details: [
+        'Synchronisation temps réel (Firebase Realtime Database), traitement d’images côté serveur (Cloud Functions).',
+        'Logique extraite des composants et testée (Vitest), dont un parseur de notation d’accords.',
+        'Design system piloté par les contraintes de la scène (salle sombre, cibles tactiles), documenté et vérifié par test.',
+      ],
+      technologies: ['TypeScript', 'React', 'Firebase', 'Vitest', 'Vite'],
+      keyTechnologies: ['TypeScript', 'React', 'Firebase', 'Vitest'],
+    },
+  ],
   technicalSkills: [
     { label: 'Langages', value: 'C++17 (design patterns, RAII), C, Python, JavaScript' },
     {
@@ -211,6 +258,7 @@ export const cvFr: Cv = {
   ui: {
     summary: 'Profil',
     experience: 'Expérience professionnelle',
+    projects: 'Réalisations personnelles',
     technicalSkills: 'Compétences techniques',
     softSkills: 'Compétences transversales',
     sectors: 'Secteurs et domaines',
@@ -224,5 +272,8 @@ export const cvFr: Cv = {
     filterHint: 'Choisissez une technologie pour mettre en évidence les expériences associées.',
     filterResult: '{count} expérience(s) avec {tech}',
     clearFilter: 'Tout afficher',
+    visitSite: 'Voir le site',
+    sourceCode: 'Code source',
+    onlineVersion: 'Version interactive et détails :',
   },
 };

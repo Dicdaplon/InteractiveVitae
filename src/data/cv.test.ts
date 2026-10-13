@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { cvFr } from './cv.fr';
 import type { Entry } from './types';
 
-const entries: Entry[] = [...cvFr.experiences];
+const entries: Entry[] = [...cvFr.experiences, ...cvFr.projects];
 
 describe('cvFr entries', () => {
   it('uses unique ids that are safe in DOM ids', () => {
@@ -38,6 +38,13 @@ describe('cvFr entries', () => {
 
 describe('cvFr links', () => {
   it('only links to https URLs', () => {
-    for (const link of cvFr.person.links) expect(link.href).toMatch(/^https:\/\//);
+    const urls = [
+      cvFr.url,
+      ...cvFr.person.links.map((link) => link.href),
+      ...cvFr.projects.flatMap((project) =>
+        project.repo ? [project.url, project.repo] : [project.url]
+      ),
+    ];
+    for (const url of urls) expect(url).toMatch(/^https:\/\//);
   });
 });

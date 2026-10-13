@@ -41,6 +41,17 @@ export interface Experience extends Entry {
   period: string;
 }
 
+export interface Project extends Entry {
+  name: string;
+  /** One-line nature of the project. */
+  context: string;
+  period: string;
+  /** Live site, https only. */
+  url: string;
+  /** Public source repository, https only. */
+  repo?: string;
+}
+
 export interface LabelledItem {
   label: string;
   value: string;
@@ -64,6 +75,7 @@ export interface Education {
 export interface UiLabels {
   summary: string;
   experience: string;
+  projects: string;
   technicalSkills: string;
   softSkills: string;
   sectors: string;
@@ -78,13 +90,19 @@ export interface UiLabels {
   /** Template with {count} and {tech} placeholders. */
   filterResult: string;
   clearFilter: string;
+  visitSite: string;
+  sourceCode: string;
+  onlineVersion: string;
 }
 
 export interface Cv {
   lang: string;
+  /** Public URL of the interactive version, printed in the header. */
+  url: string;
   person: Person;
   summary: string;
   experiences: Experience[];
+  projects: Project[];
   technicalSkills: LabelledItem[];
   softSkills: LabelledItem[];
   sectors: string[];
