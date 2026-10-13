@@ -30,11 +30,11 @@ const cv: Cv = {
       context: 'Cybersécurité industrielle (OT), edge AI',
       period: '10/2025 – présent',
       summary:
-        'Firmware C++ temps réel sur ARM Cortex-M et edge AI : architecture firmware, télémétrie MQTT, autoencodeur de détection d’anomalies exporté en TFLite.',
+        'Firmware C++ temps réel sur ARM Cortex-M et edge AI : architecture firmware, télémétrie MQTT, autoencodeur GRU compact de détection d’anomalies (TFLite).',
       details: [
         'Responsable de l’architecture firmware : découpage en modules, séparation des responsabilités, contrats d’interface, décisions documentées en ADR.',
         'Acquisition temps réel sur microcontrôleurs ARM Cortex-M, communication inter-cartes et remontée télémétrique ; contribution au durcissement et à l’intégrité du firmware.',
-        'Edge AI : autoencodeur non supervisé pour la détection d’anomalies sur séries temporelles (erreur de reconstruction et seuil), entraînement et export TFLite.',
+        'Edge AI : autoencodeur GRU non supervisé de petite taille, conçu pour l’embarqué, détectant les anomalies sur séries temporelles (erreur de reconstruction et seuil) ; entraînement, export TFLite, POC fonctionnel.',
         'Portage exploratoire sur STM32 et i.MX8 : mesures CPU/RAM et comparatif des plateformes.',
         'Prétraitement embarqué (statistiques glissantes, détection de transitions) ; configuration persistée en flash (binaire, CRC, repli).',
         'Intégration IoT via ThingsBoard et MQTT : attributs partagés, synchronisation de configuration, gestion des états de connexion.',
@@ -215,11 +215,10 @@ const cv: Cv = {
     },
     {
       id: 'lolouplive',
-      printHidden: true,
       name: 'LoloupLive',
-      context: 'Application web temps réel pour les jams du collectif',
+      context: 'Site et appli de jam du collectif musical que j’anime',
       period: '2025',
-      url: 'https://dicdaplon.github.io/LoloupLive/',
+      url: 'https://dicdaplon.github.io/LoloupLive/#/info',
       repo: 'https://github.com/Dicdaplon/LoloupLive',
       summary:
         'Application temps réel utilisée en session : paroles et grilles d’accords, chat projeté, capture photo ; logique testée et design system vérifié par test.',
@@ -261,7 +260,7 @@ const cv: Cv = {
     {
       label: 'Collectif musical',
       value:
-        'Création et animation d’un collectif musical à Lyon depuis 3 ans : jams, événements, coordination.',
+        'Création et animation d’un collectif musical à Lyon depuis 4 ans : jams, événements, coordination.',
     },
     {
       label: 'Enseignement',

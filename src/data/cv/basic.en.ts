@@ -29,11 +29,11 @@ const cv: Cv = {
       context: 'Industrial cybersecurity (OT), edge AI',
       period: 'Oct 2025 – Present',
       summary:
-        'Real-time C++ firmware on ARM Cortex-M and edge AI: firmware architecture, MQTT telemetry, anomaly-detection autoencoder exported to TFLite.',
+        'Real-time C++ firmware on ARM Cortex-M and edge AI: firmware architecture, MQTT telemetry, compact GRU autoencoder for anomaly detection (TFLite).',
       details: [
         'Own the firmware architecture: module boundaries, separation of concerns, interface contracts, decisions recorded as ADRs.',
         'Built real-time acquisition on ARM Cortex-M microcontrollers, inter-board communication and telemetry; contributed to firmware hardening and integrity.',
-        'Designed an unsupervised autoencoder for time-series anomaly detection (reconstruction error and threshold); trained it and exported it to TFLite.',
+        'Designed a compact unsupervised GRU autoencoder sized for embedded targets, detecting time-series anomalies by reconstruction error and threshold; trained it, exported it to TFLite and delivered a working proof of concept.',
         'Ran exploratory ports to STM32 and i.MX8, measuring CPU and RAM to compare platforms.',
         'Implemented on-device preprocessing (rolling statistics, transition detection) and flash-persisted configuration (binary, CRC, fallback).',
         'Integrated ThingsBoard over MQTT: shared attributes, configuration sync, connection-state handling.',
@@ -214,11 +214,10 @@ const cv: Cv = {
     },
     {
       id: 'lolouplive',
-      printHidden: true,
       name: 'LoloupLive',
-      context: 'Real-time web app for the collective’s jam sessions',
+      context: 'Website and jam app of the music collective I run',
       period: '2025',
-      url: 'https://dicdaplon.github.io/LoloupLive/',
+      url: 'https://dicdaplon.github.io/LoloupLive/#/info',
       repo: 'https://github.com/Dicdaplon/LoloupLive',
       summary:
         'Real-time app used live on stage: lyrics and chord charts, projected chat, photo capture; tested logic and a test-enforced design system.',
@@ -262,7 +261,7 @@ const cv: Cv = {
   softSkills: [
     {
       label: 'Music collective',
-      value: 'Founded and run a music collective in Lyon for 3 years: jams, events, coordination.',
+      value: 'Founded and run a music collective in Lyon for 4 years: jams, events, coordination.',
     },
     {
       label: 'Teaching',
