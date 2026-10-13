@@ -36,8 +36,8 @@ const cv: Cv = {
       summary:
         'ML embarqué : autoencodeur GRU compact de détection d’anomalies, entraîné en Keras, exporté en TFLite, évalué sur STM32/i.MX8 (POC fonctionnel).',
       details: [
-        'Responsable de l’architecture firmware C++ (modules, contrats d’interface), décisions documentées en ADR.',
-        'Chaîne de données capteurs : acquisition temps réel sur ARM Cortex-M, prétraitement embarqué (statistiques glissantes, détection de transitions), télémétrie MQTT/ThingsBoard.',
+        'Responsable de l’architecture firmware C++ (modules, contrats d’interface), ADR.',
+        'Chaîne capteurs : acquisition temps réel Cortex-M, prétraitement embarqué, MQTT.',
         'Autoencodeur GRU non supervisé de petite taille (Keras/TensorFlow), conçu pour l’embarqué : anomalies détectées par erreur de reconstruction et seuil ; entraînement, export TFLite, POC fonctionnel.',
         'Portage exploratoire sur STM32 et i.MX8 : mesures CPU/RAM, comparatif de faisabilité embarquée.',
         'GTest et GitLab CI ; développement agentique quotidien (Claude Code) avec revue et tests.',
@@ -63,6 +63,7 @@ const cv: Cv = {
     },
     {
       id: 'augmenta',
+      printHighlights: 1,
       role: 'Développeur C++ et JavaScript',
       company: 'Augmenta',
       context: 'Nuages de points temps réel pour le spectacle vivant',
@@ -70,10 +71,9 @@ const cv: Cv = {
       summary:
         'Filtrage adaptatif de nuages de points (PCL, VoxelGrid) qui tient un nombre de points cible quelle que soit la scène, et monitoring C++ thread-safe.',
       details: [
+        'Interfaces 3D web Babylon.js via OSC/WebSockets ; choix d’architecture en ADR.',
         'Régulateur de filtrage VoxelGrid : ajuste automatiquement la taille de voxel pour tenir un nombre de points cible, quelle que soit la densité de la scène.',
         'Moteur de monitoring C++ centralisé et thread-safe (JUCE) : collecte non bloquante, statistiques temps réel sur les flux de points et de clusters.',
-        'Choix d’architecture documentés et arbitrés en ADR.',
-        'Interfaces 3D web (Babylon.js) reliées au moteur par OSC et WebSockets.',
       ],
       technologies: [
         'C++',
@@ -91,15 +91,14 @@ const cv: Cv = {
     },
     {
       id: 'mylight',
+      printHighlights: 1,
       role: 'Développeur firmware',
       company: 'MyLight Systems',
       context: 'Énergie et IoT',
       period: '09/2022 – 05/2025 (2 ans 9 mois)',
       summary:
         'Firmware C++17 de mesure et de pilotage d’installations électriques sur Linux embarqué, intégré à Azure IoT.',
-      details: [
-        'Briques de mesure et de pilotage, pattern Listener/Observer, contrat JSON avec le backend, Device Twin Azure IoT ; tests GTest.',
-      ],
+      details: ['Pattern Observer, contrat JSON backend, Device Twin Azure IoT, tests GTest.'],
       technologies: [
         'C++',
         'OpenWrt',
@@ -120,7 +119,7 @@ const cv: Cv = {
       context: 'Logiciel 3D, ingénierie et métrologie',
       period: '03/2022 – 06/2022 (4 mois)',
       summary:
-        'Visualisation, reconstruction et manipulation de nuages de points LiDAR dans un logiciel 3D de métrologie (C++, Qt), groupe Hexagon.',
+        'Visualisation et reconstruction de nuages de points LiDAR en métrologie 3D (C++, Qt).',
       details: [
         'Opérations de reconstruction et de manipulation sur des nuages de points LiDAR.',
         'Outils de visualisation et d’interaction 3D ; interface utilisateur Qt.',
@@ -138,7 +137,6 @@ const cv: Cv = {
       summary:
         'Segmentation par IA de modèles 3D de rosiers, comparée aux méthodes classiques ; modèles de croissance et simulation d’éclairage (ray tracing, LiDAR).',
       details: [
-        'Stage de master poursuivi par un contrat doctoral (thèse non menée à terme).',
         'Amélioration et généralisation d’une segmentation par IA à des modèles 3D.',
         'Adaptation de méthodes de segmentation classiques pour comparer la méthode à l’état de l’art.',
         'Modèles de rosiers dynamiques : croissance, environnement lumineux, modélisation 3D.',
@@ -238,7 +236,8 @@ const cv: Cv = {
     },
     {
       label: 'Audio / DSP',
-      value: 'Filtrage numérique (biquads), réponse en fréquence, Web Audio / Tone.js',
+      value:
+        'Détection temps réel de tonalité, d’accords et de tempo, FFT, détection d’onsets, filtres biquad, Web Audio / AudioWorklet',
     },
     {
       label: 'Vision / 3D',

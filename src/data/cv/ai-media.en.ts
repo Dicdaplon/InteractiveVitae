@@ -36,8 +36,8 @@ const cv: Cv = {
       summary:
         'On-device ML: compact GRU autoencoder for time-series anomaly detection, trained in Keras, exported to TFLite, evaluated on STM32/i.MX8 (working POC).',
       details: [
-        'Own the C++ firmware architecture (modules, interface contracts), with decisions recorded as ADRs.',
-        'Built the sensor data pipeline: real-time acquisition on ARM Cortex-M, on-device preprocessing (rolling statistics, transition detection), MQTT/ThingsBoard telemetry.',
+        'Own the C++ firmware architecture (modules, interface contracts), decisions in ADRs.',
+        'Sensor pipeline: real-time acquisition on Cortex-M, on-device preprocessing, MQTT telemetry.',
         'Designed a compact unsupervised GRU autoencoder (Keras/TensorFlow) sized for embedded targets, flagging anomalies by reconstruction error and threshold; trained it, exported it to TFLite and delivered a working proof of concept.',
         'Ran exploratory ports to STM32 and i.MX8, measuring CPU and RAM to assess on-device feasibility.',
         'GTest and GitLab CI; daily agentic development (Claude Code) with review and tests.',
@@ -63,6 +63,7 @@ const cv: Cv = {
     },
     {
       id: 'augmenta',
+      printHighlights: 1,
       role: 'C++ and JavaScript Developer',
       company: 'Augmenta',
       context: 'Real-time point clouds for live performance',
@@ -70,10 +71,9 @@ const cv: Cv = {
       summary:
         'Adaptive point-cloud filtering (PCL, VoxelGrid) that holds a target point count at any scene density, plus a thread-safe C++ monitoring engine.',
       details: [
+        'Babylon.js 3D web interfaces over OSC/WebSockets; architecture decisions in ADRs.',
         'Built a VoxelGrid filter controller that tunes voxel size to hold a target point count whatever the scene density.',
         'Designed a centralised, thread-safe C++ monitoring engine (JUCE): non-blocking collection, real-time statistics on point and cluster streams.',
-        'Recorded architecture decisions as ADRs.',
-        'Connected web 3D interfaces (Babylon.js) to the engine over OSC and WebSockets.',
       ],
       technologies: [
         'C++',
@@ -91,15 +91,14 @@ const cv: Cv = {
     },
     {
       id: 'mylight',
+      printHighlights: 1,
       role: 'Firmware Developer',
       company: 'MyLight Systems',
       context: 'Energy and IoT',
       period: 'Sep 2022 – May 2025 (2 yrs 9 months)',
       summary:
         'C++17 firmware measuring and controlling energy installations on embedded Linux, integrated with Azure IoT.',
-      details: [
-        'Built measurement and control blocks with the Listener/Observer pattern, a JSON backend contract and the Azure IoT Device Twin; GTest suites.',
-      ],
+      details: ['Observer pattern, JSON backend contract, Azure IoT Device Twin, GTest suites.'],
       technologies: [
         'C++',
         'OpenWrt',
@@ -120,7 +119,7 @@ const cv: Cv = {
       context: '3D software for engineering and metrology',
       period: 'Mar 2022 – Jun 2022 (4 months)',
       summary:
-        'Visualisation, reconstruction and manipulation of LiDAR point clouds in 3D metrology software (C++, Qt), Hexagon group.',
+        'LiDAR point-cloud visualisation and reconstruction in 3D metrology software (C++, Qt).',
       details: [
         'Implemented reconstruction and manipulation operations on LiDAR point clouds.',
         'Built 3D visualisation and interaction tools with a Qt user interface.',
@@ -138,7 +137,6 @@ const cv: Cv = {
       summary:
         'AI segmentation of 3D rose plant models, benchmarked against classical methods; growth models and lighting simulation (ray tracing, LiDAR).',
       details: [
-        'Started as a master’s internship, continued on a PhD contract (not completed).',
         'Improved and generalised an AI segmentation method to 3D models.',
         'Adapted classical segmentation methods to benchmark the approach against the state of the art.',
         'Built dynamic rose plant models: growth, light environment, 3D modelling.',
