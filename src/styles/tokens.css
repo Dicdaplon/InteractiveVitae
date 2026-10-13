@@ -46,12 +46,12 @@
   --color-timeline: #6a959c; /* vertical timeline rule + nodes, 3.08 canvas / 3.29 surface — UI >= 3:1 */
 
   /* --- Typography ---------------------------------------------------------
-     One family, two optical roles. IBM Plex Sans (SIL OFL 1.1, variable
-     build "IBM Plex Sans Var") to be self-hosted later in /fonts/; until
-     then the system stack takes over with no layout breakage.
-     Mono: IBM Plex Mono 400/500 (OFL) for dates, versions, tech chips. */
+     One family, two optical roles. IBM Plex Sans Variable (SIL OFL 1.1) and
+     IBM Plex Mono 400 are self-hosted through @fontsource, imported in
+     main.ts; the system stack only covers a failed font load. Mono is for
+     dates, versions and tech chips. */
   --font-content:
-    'IBM Plex Sans', 'IBM Plex Sans Var', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'IBM Plex Sans Variable', 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
   --font-ui: var(--font-content);
   --font-mono:

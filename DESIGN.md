@@ -68,9 +68,10 @@ Palette rules:
 ## 3. Typography
 
 **IBM Plex Sans** (SIL OFL 1.1, variable build) for everything, **IBM Plex Mono** for dates, periods
-(`2021 — 2024`), version-like data and tech chips. Self-host later as woff2 (latin + latin-ext,
-`font-display: swap`). Until then the fallback stack (`system-ui`, Segoe UI, Roboto, Helvetica Neue,
-Arial) renders correctly; metrics are close enough that nothing reflows badly. `--font-ui` aliases
+(`2021 — 2024`), version-like data and tech chips. Both are self-hosted as woff2 through
+`@fontsource-variable/ibm-plex-sans` and `@fontsource/ibm-plex-mono` (imported in `main.ts`,
+`font-display: swap`), so screen and print metrics are the same on every machine, which the one-page
+print check relies on. The system stack only covers a failed font load. `--font-ui` aliases
 `--font-content` so components written against either name stay consistent.
 
 Headings use the same family; hierarchy comes from weight (600 for h1/h2, 600 for card titles, 400 body)
