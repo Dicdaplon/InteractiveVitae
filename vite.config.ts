@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig, runnerImport, type Plugin } from 'vite';
 import type { Cv } from './src/data/types';
 import { parseMode } from './src/data/variants';
+import { withTypography } from './src/render/typography';
 
 const REPO_BASE = '/InteractiveVitae/';
 
@@ -28,7 +29,7 @@ function cvMetadata(file: string): Plugin {
     name: 'cv-metadata',
     async transformIndexHtml(html) {
       const { module } = await runnerImport<{ default: Cv }>(file);
-      const cv = module.default;
+      const cv = withTypography(module.default);
       return html
         .replace('%CV_LANG%', cv.lang)
         .replace('%CV_TITLE%', escapeHtml(`${cv.person.name} · ${cv.person.title}`))

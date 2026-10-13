@@ -4,6 +4,7 @@ import { renderCv } from './cv';
 import { el } from './dom';
 import { renderEntry } from './entry';
 import { renderQrCode } from './qr';
+import { frenchSpacing } from './typography';
 import { bareUrl } from './url';
 
 describe('el', () => {
@@ -147,5 +148,19 @@ describe('renderQrCode', () => {
     for (const project of cvFr.projects) {
       expect(page.querySelector(`#project-${project.id} svg.qr`), project.id).not.toBeNull();
     }
+  });
+});
+
+describe('frenchSpacing', () => {
+  it('binds French punctuation to the previous word but leaves URLs alone', () => {
+    expect(frenchSpacing('Profil : C++ ; Python ?')).toBe('Profil : C++ ; Python ?');
+    expect(frenchSpacing('https://example.org')).toBe('https://example.org');
+  });
+
+  it('applies to French CVs only', () => {
+    const french = renderCv({ ...cvFr, lang: 'fr', summary: 'Signal : image' });
+    const english = renderCv({ ...cvFr, summary: 'Signal : image' });
+    expect(french.querySelector('.summary')?.textContent).toBe('Signal : image');
+    expect(english.querySelector('.summary')?.textContent).toBe('Signal : image');
   });
 });

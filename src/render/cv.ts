@@ -3,6 +3,7 @@ import { el } from './dom';
 import { renderExperience } from './experience';
 import { renderHeader } from './header';
 import { renderProject } from './project';
+import { withTypography } from './typography';
 import { renderEducation, renderLabelledList, renderLanguages, renderSection } from './sections';
 
 /**
@@ -54,7 +55,8 @@ function renderFilterBar(ui: UiLabels): HTMLElement {
  * Builds the whole document. The main column comes first in the DOM so that
  * reading order and print order match the PDF; CSS places the aside visually.
  */
-export function renderCv(cv: Cv): HTMLElement {
+export function renderCv(source: Cv): HTMLElement {
+  const cv = withTypography(source);
   const { ui } = cv;
   return el(
     'div',
